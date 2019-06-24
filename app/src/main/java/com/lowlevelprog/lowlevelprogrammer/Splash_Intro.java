@@ -1,13 +1,21 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class Splash_Intro extends Activity {
+public class Splash_Intro extends AppCompatActivity {
+
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,10 @@ public class Splash_Intro extends Activity {
             }
         }, 0);
 
+        tv = (TextView) findViewById(R.id.tvsplash);
+
+        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition); // animation
+        tv.startAnimation(myanim);
 
         final Intent i = new Intent(this, MainActivity.class);
         Thread timer = new Thread() {
@@ -37,6 +49,12 @@ public class Splash_Intro extends Activity {
             }
         };
         timer.start();
+    }
 
+    @Override   // disabling back button during the splash screen
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).getView();
+        return false;
     }
 }

@@ -12,7 +12,7 @@
         <activity
             android:name=".Splash_Intro"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
+            android:theme="@style/IntroTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

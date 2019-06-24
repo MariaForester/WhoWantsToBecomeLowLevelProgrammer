@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LowLevelProgrammer</string>
+
+    <string name="app_full_name">Who Wants to Become\na Low Level Programmer</string>
 </resources>
