@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvsplash"
+            android:id="@+id/tv_splash"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/amatic_regular"
