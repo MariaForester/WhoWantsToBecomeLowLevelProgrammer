@@ -51,6 +51,7 @@ public class Splash_Intro extends AppCompatActivity {
         timer.start();
     }
 
+
     @Override   // disabling back button during the splash screen
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK)
