@@ -8,10 +8,8 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 public class Splash_Intro extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class Splash_Intro extends AppCompatActivity {
             }
         }, 0);
 
-        tv = (TextView) findViewById(R.id.tvsplash);
+        tv = (TextView) findViewById(R.id.tv_splash);
 
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition); // animation
         tv.startAnimation(myanim);
