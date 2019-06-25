@@ -2,4 +2,6 @@
     <string name="app_name">LowLevelProgrammer</string>
 
     <string name="app_full_name">Who Wants to Become\na Low Level Programmer</string>
+    <string name="local_game_rus">Локальная игра</string>
+    <string name="multip_game_rus">Сетевая игра</string>
 </resources>
