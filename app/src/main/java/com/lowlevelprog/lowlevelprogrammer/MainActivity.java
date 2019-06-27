@@ -2,15 +2,17 @@ package com.lowlevelprog.lowlevelprogrammer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.LinearLayout;
 import com.hanks.htextview.base.AnimationListener;
 import com.hanks.htextview.base.HTextView;
 import com.hanks.htextview.line.LineTextView;
@@ -19,11 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
     private LineTextView hTextView;
     private Button button_local, button_multiplayer;
+    ConstraintLayout myLayout;
+    AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        myLayout = findViewById(R.id.layout_main);
+
+        animationDrawable = (AnimationDrawable) myLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(3000);
+        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.start();
 
         hTextView = findViewById(R.id.tv_htext); // block on above
         hTextView.setLineColor(R.color.textColor);
