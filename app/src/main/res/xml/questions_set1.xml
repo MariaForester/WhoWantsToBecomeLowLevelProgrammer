@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+
+    <Question>
+        <question>Тезис Чёрча (1936): Каждая эффективно вычислимая функция является</question>
+        <optiona>мю-рекурсивной</optiona>
+        <optionb>ля-рекурсивной</optionb>
+        <optionc>ре-рекурсивной</optionc>
+        <optiond>не рекурсивной</optiond>
+<correctanswer>мю-рекурсивной</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Множество сообщаемых нам время от времени правил, которые точно регламентируют наше поведение</question>
+        <optiona>энергия космоса</optiona>
+        <optionb>эффективная функция</optionb>
+        <optionc>эффективная процедура</optionc>
+        <optiond>интуиция</optiond>
+        <correctanswer>эффективная процедура</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Класс абстрактных машин, определенный Тьюрингом</question>
+        <optiona>машина времени</optiona>
+        <optionb>машина Тьюринга</optionb>
+        <optionc>Macintosh</optionc>
+        <optiond>System 360</optiond>
+        <correctanswer>машина Тьюринга</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Универсальная Машина Тьюринга (МТ) может заменить</question>
+        <optiona>2 МТ</optiona>
+        <optionb>10 МТ</optionb>
+        <optionc>любую МТ</optionc>
+        <optiond>не любую МТ</optiond>
+        <correctanswer>любую МТ</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Проблема останова была решена в</question>
+        <optiona>1950</optiona>
+        <optionb>не была решена</optionb>
+        <optionc>1976</optionc>
+        <optiond>2016</optiond>
+        <correctanswer>не была решена</correctanswer>
+    </Question>
+
+</company>

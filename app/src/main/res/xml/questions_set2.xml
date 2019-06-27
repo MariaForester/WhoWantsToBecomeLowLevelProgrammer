@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+
+    <Question>
+        <question>Модель абстрактного вычислителя Алана Тьюринга была предложена в</question>
+        <optiona>1936</optiona>
+        <optionb>1937</optionb>
+        <optionc>1940</optionc>
+        <optiond>1935</optiond>
+        <correctanswer>1936</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Назовите число принципов фон Неймана</question>
+        <optiona>5</optiona>
+        <optionb>4</optionb>
+        <optionc>6</optionc>
+        <optiond>3</optiond>
+        <correctanswer>5</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Назовите число основных регистров в EDSAC</question>
+        <optiona>4</optiona>
+        <optionb>5</optionb>
+        <optionc>6</optionc>
+        <optiond>3</optiond>
+        <correctanswer>5</correctanswer>
+    </Question>
+
+    <Question>
+        <question>EDSAC был основан на ?-битном слове</question>
+        <optiona>16</optiona>
+        <optionb>28</optionb>
+        <optionc>18</optionc>
+        <optiond>26</optiond>
+        <correctanswer>18</correctanswer>
+    </Question>
+
+    <Question>
+        <question>EDSAC был основан в</question>
+        <optiona>1950</optiona>
+        <optionb>1948</optionb>
+        <optionc>1945</optionc>
+        <optiond>1949</optiond>
+        <correctanswer>1949</correctanswer>
+    </Question>
+
+</company>

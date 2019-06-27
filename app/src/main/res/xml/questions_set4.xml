@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+
+    <Question>
+        <question>Детерминированный конечный автомат состоит из ? элементов</question>
+        <optiona>2</optiona>
+        <optionb>4</optionb>
+        <optionc>5</optionc>
+        <optiond>3</optiond>
+        <correctanswer>5</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Вместе с фон Нейманом и Голдстайном в описании принципов построения ЭВМ участвовал</question>
+        <optiona>Нойс</optiona>
+        <optionb>Ктлби</optionb>
+        <optionc>Шокли</optionc>
+        <optiond>Беркс</optiond>
+        <correctanswer>Беркс</correctanswer>
+    </Question>
+
+</company>
