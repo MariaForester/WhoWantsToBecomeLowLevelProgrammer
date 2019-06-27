@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+
+    <Question>
+        <question>Машина Тьюринга была сконструирована в</question>
+        <optiona>1940</optiona>
+        <optionb>1936</optionb>
+        <optionc>не была</optionc>
+        <optiond>1937</optiond>
+        <correctanswer>не была</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Принципы фон Неймана были опубликованы в</question>
+        <optiona>1946</optiona>
+        <optionb>1944</optionb>
+        <optionc>1940</optionc>
+        <optiond>1948</optiond>
+        <correctanswer>1946</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Сколько битов использовалось в EDSAC</question>
+        <optiona>18</optiona>
+        <optionb>17</optionb>
+        <optionc>26</optionc>
+        <optiond>25</optiond>
+        <correctanswer>17</correctanswer>
+    </Question>
+
+    <Question>
+        <question>Третье поколение ЭВМ было с 1965 по</question>
+        <optiona>1975</optiona>
+        <optionb>1985</optionb>
+        <optionc>1990</optionc>
+        <optiond>1980</optiond>
+        <correctanswer>1980</correctanswer>
+    </Question>
+
+</company>
