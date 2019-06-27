@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         myLayout = findViewById(R.id.layout_main);
 
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(3000);
-        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
 
         hTextView = findViewById(R.id.tv_htext); // block on above

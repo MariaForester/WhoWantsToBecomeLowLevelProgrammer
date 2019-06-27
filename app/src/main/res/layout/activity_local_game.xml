@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/local_game"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/gradients_anim"
-    android:id="@+id/local_game"
-    android:orientation="vertical"
     android:weightSum="12">
 
-</LinearLayout>
+    <android.support.design.button.MaterialButton
+        android:id="@+id/but_start_loc"
+        android:layout_width="254dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="328dp"
+        android:fontFamily="@font/rex_light"
+        android:text="@string/start_rus"
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
+        app:backgroundTint="@color/buttons"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.216"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/darkBlue"
+        app:strokeWidth="1.5dp" />
+</android.support.constraint.ConstraintLayout>

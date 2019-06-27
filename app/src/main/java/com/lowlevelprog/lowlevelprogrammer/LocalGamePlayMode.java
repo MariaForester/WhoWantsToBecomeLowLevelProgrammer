@@ -5,7 +5,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MultiplayerGame extends AppCompatActivity {
+public class LocalGamePlayMode extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
@@ -13,9 +13,9 @@ public class MultiplayerGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mulpiplayer_game);
+        setContentView(R.layout.activity_local_game_play_mode);
 
-        myLayout = findViewById(R.id.multiplayer);
+        myLayout = findViewById(R.id.local_game_play_mode);
 
         animationDrawable = (AnimationDrawable) myLayout.getBackground(); // animated background
         animationDrawable.setEnterFadeDuration(4500);
