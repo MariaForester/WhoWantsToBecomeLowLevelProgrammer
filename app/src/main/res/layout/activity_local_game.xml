@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/local_game"
     android:layout_width="fill_parent"
@@ -7,7 +7,7 @@
     android:background="@drawable/gradients_anim"
     android:weightSum="12">
 
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but_start_loc"
         android:layout_width="254dp"
         android:layout_height="72dp"
@@ -31,4 +31,4 @@
         app:rippleColor="#33AAAAAA"
         app:strokeColor="@color/colorPrimary"
         app:strokeWidth="0.5dp" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

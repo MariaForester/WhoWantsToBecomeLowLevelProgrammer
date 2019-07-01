@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611407750453",
+    "firebase_url": "https://low-level-programmer.firebaseio.com",
+    "project_id": "low-level-programmer",
+    "storage_bucket": "low-level-programmer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611407750453:android:251c8fa64b4cd231",
+        "android_client_info": {
+          "package_name": "com.lowlevelprog.lowlevelprogrammer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611407750453-qga9itu71frdc77pse0jjqvs1og6p8jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFX4eODjM1tJUMjvqWg3xLl6itoU3ZeLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611407750453-qga9itu71frdc77pse0jjqvs1og6p8jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

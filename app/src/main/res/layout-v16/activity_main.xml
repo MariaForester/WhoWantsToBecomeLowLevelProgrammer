@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_main"
     android:layout_width="fill_parent"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.185" />
 
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but_loc_game"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         app:strokeColor="@color/darkBlue"
         app:strokeWidth="1.5dp" />
 
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but_multip_game"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
@@ -83,4 +83,4 @@
         app:strokeColor="@color/darkBlue"
         app:strokeWidth="1.5dp" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

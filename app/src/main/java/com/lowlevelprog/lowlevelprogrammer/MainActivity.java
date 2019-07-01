@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+
 import com.hanks.htextview.base.AnimationListener;
 import com.hanks.htextview.base.HTextView;
 import com.hanks.htextview.line.LineTextView;
@@ -128,15 +128,15 @@ public class MainActivity extends AppCompatActivity {
     public AlertDialog.Builder buildDialog(Context c) {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder.setCancelable(false);
-        builder.setTitle("No Internet Connection");
-        builder.setMessage("Connect Your Device To Continue");
-        builder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+        builder.setTitle("Нет доступа к Интернету");
+        builder.setMessage("Подключите ваше устройство для продолжения");
+        builder.setPositiveButton("Выход", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        builder.setNegativeButton("Continue", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Продолжить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(MainActivity.this, Splash_Intro.class);
