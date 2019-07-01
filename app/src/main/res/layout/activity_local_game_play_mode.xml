@@ -1,10 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/local-game_play_mode"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradients_anim"
     tools:context=".LocalGamePlayMode">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="200dp"
+            android:layout_height="318dp"
+            android:layout_gravity="center">
+
+            <RadioButton
+                android:id="@+id/option_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_box"
+                android:backgroundTint="@color/buttons"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/textColor"
+                app:fontFamily="@font/rex_bold" />
+
+            <RadioButton
+                android:id="@+id/option_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_box"
+                android:backgroundTint="@color/buttons"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/textColor"
+                app:fontFamily="@font/rex_bold" />
+
+            <RadioButton
+                android:id="@+id/option_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_box"
+                android:backgroundTint="@color/buttons"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/textColor"
+                app:fontFamily="@font/rex_bold" />
+
+            <RadioButton
+                android:id="@+id/option_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_box"
+                android:backgroundTint="@color/buttons"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/textColor"
+                app:fontFamily="@font/rex_bold" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColor"
+        android:textSize="21sp"
+        app:fontFamily="@font/rex_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/submit_loc_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="@color/buttons"
+        android:onClick="btnPressed"
+        android:text="@string/submit_rus"
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
+        app:cornerRadius="0dp"
+        app:fontFamily="@font/rex_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/darkBlue"
+        app:strokeWidth="1.5dp" />
+
+    <TextView
+        android:id="@+id/reward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/transparentLightBlue"
+        android:textSize="24sp"
+        app:fontFamily="@font/rex_bold_inline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
 
 </android.support.constraint.ConstraintLayout>

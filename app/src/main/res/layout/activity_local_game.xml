@@ -17,18 +17,18 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="328dp"
-        android:fontFamily="@font/rex_light"
         android:text="@string/start_rus"
         android:textColor="@color/textColor"
         android:textSize="30sp"
         app:backgroundTint="@color/buttons"
         app:cornerRadius="0dp"
+        app:fontFamily="@font/rex_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.216"
         app:rippleColor="#33AAAAAA"
-        app:strokeColor="@color/darkBlue"
-        app:strokeWidth="1.5dp" />
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="0.5dp" />
 </android.support.constraint.ConstraintLayout>

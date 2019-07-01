@@ -23,4 +23,9 @@ public class MultiplayerGame extends AppCompatActivity {
         animationDrawable.start();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

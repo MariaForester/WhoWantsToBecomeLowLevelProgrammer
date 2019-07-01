@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LocalGamePlayMode"></activity>
+        <activity android:name=".Progress"></activity>
+        <activity android:name=".FailedGame" />
+        <activity android:name=".LocalGamePlayMode" />
         <activity
             android:name=".Splash_Intro"
             android:screenOrientation="portrait"
@@ -35,6 +37,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MultiplayerGame"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WonGame"
             android:screenOrientation="portrait" />
     </application>
 

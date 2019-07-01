@@ -5,4 +5,9 @@
     <string name="local_game_rus">Локальная игра</string>
     <string name="multip_game_rus">Сетевая игра</string>
     <string name="start_rus">Начать игру!</string>
+    <string name="win_rus">Вы победили!</string>
+    <string name="failure_rus">Вы проиграли!</string>
+    <string name="submit_rus">Подтвердить</string>
+    <string name="win_home_rus">Сыграть еще!</string>
+    <string name="failed_home_rus">Попробовать снова!</string>
 </resources>
