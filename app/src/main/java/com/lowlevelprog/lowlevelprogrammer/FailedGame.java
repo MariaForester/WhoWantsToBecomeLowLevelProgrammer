@@ -27,6 +27,7 @@ public class FailedGame extends AppCompatActivity {
         animationDrawable.start();
     }
 
+
     public void playAgain(View view) {
         finish();
     }

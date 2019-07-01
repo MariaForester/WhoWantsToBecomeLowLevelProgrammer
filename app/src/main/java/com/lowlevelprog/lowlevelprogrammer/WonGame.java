@@ -3,11 +3,15 @@ package com.lowlevelprog.lowlevelprogrammer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
+
+import com.firebase.client.Firebase;
 
 public class WonGame extends AppCompatActivity {
 
