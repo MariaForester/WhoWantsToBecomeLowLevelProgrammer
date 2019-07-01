@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -81,6 +82,19 @@ public class LocalGamePlayMode extends AppCompatActivity {
         question = listForRandomChoices1.get(0);
         setNumber = 0;
         setUp(question, setNumber);
+        textViewer = findViewById(R.id.local_game_play_mode_counter);
+
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long l) {
+                textViewer.setText(String.valueOf(l/ 1000));
+            }
+
+            public void onFinish() {
+                textViewer.setText("-");
+                finish();
+            }
+        }.start();
 
     }
 
@@ -89,6 +103,18 @@ public class LocalGamePlayMode extends AppCompatActivity {
         int radioID = radioGroup.getCheckedRadioButtonId();
         answer = findViewById(radioID);
 
+        textViewer = findViewById(R.id.local_game_play_mode_counter);
+        new CountDownTimer(35000, 1000) {
+
+            public void onTick(long l) {
+                textViewer.setText(String.valueOf(l/ 1000));
+            }
+
+            public void onFinish() {
+                textViewer.setText("Time is over:(");
+                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
+            }
+        }.start();
 
         if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
             score = query.calculateAnswer(setNumber, score);
