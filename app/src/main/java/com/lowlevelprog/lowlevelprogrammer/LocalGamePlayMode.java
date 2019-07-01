@@ -120,7 +120,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
                 setUp(question, setNumber);
                 startActivity(new Intent(this, Progress.class));
-
             } else {
                 startActivity(new Intent(this, WonGame.class));
             }

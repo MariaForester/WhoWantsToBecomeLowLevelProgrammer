@@ -1,8 +1,11 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -43,23 +46,27 @@ public class Progress extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView);
 
         // используем адаптер данных
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, scoreValues);
 
+        textViewer = findViewById(R.id.progress_counter);
+
         listView.setAdapter(adapter);
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(10000, 1000) {
 
             public void onTick(long l) {
-                textViewer.setText(" " + l/ 1000);
+                textViewer.setText(String.valueOf(l/ 1000));
             }
 
             public void onFinish() {
                 textViewer.setText("-");
+                finish();
             }
         }.start();
-        startActivity(new Intent(this, Progress.class));
-
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
