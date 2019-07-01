@@ -52,7 +52,7 @@ public class Progress extends AppCompatActivity {
         textViewer = findViewById(R.id.progress_counter);
 
         listView.setAdapter(adapter);
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(5000, 1000) {
 
             public void onTick(long l) {
                 textViewer.setText(String.valueOf(l/ 1000));

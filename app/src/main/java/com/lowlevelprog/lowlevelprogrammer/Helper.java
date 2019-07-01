@@ -78,7 +78,7 @@ class Helper {
         }
     }
 
-    // retrieve a questin by its index and set number
+    // retrieve a question by its index and set number
     public String getQuestion(int index, int setNumber) {
         switch (setNumber) {
             case 0:

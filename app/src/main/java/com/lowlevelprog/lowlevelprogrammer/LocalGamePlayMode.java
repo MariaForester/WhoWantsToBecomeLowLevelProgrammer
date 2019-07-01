@@ -84,13 +84,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
     }
 
-    // Resetting parameters on start
-    @Override
-    protected void onStart() {
-        super.onStart();
-        reset();
-    }
-
     // Actions when one of the answer buttons is pressed
     public void btnPressed(View v) {
         int radioID = radioGroup.getCheckedRadioButtonId();
@@ -122,29 +115,13 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 startActivity(new Intent(this, Progress.class));
             } else {
                 startActivity(new Intent(this, WonGame.class));
+                finish();
             }
         } else {
             startActivity(new Intent(this, FailedGame.class));
+            finish();
         }
 
-    }
-
-    // Resetting all the parameters
-    private void reset() {
-        number = 0;
-        score = 0;
-        listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices3 = Arrays.asList(0, 1, 2, 3);
-        listForRandomChoices4 = Arrays.asList(0, 1);
-        Collections.shuffle(listForRandomChoices1);
-        Collections.shuffle(listForRandomChoices2);
-        Collections.shuffle(listForRandomChoices3);
-        Collections.shuffle(listForRandomChoices4);
-        question = listForRandomChoices1.get(0);
-        setNumber = 0;
-        radioGroup.clearCheck();
-        setUp(question, setNumber);
     }
 
     // Setting up the questions with corresponding answers
