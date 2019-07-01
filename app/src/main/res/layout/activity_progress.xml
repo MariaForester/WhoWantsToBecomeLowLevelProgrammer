@@ -8,4 +8,11 @@
     android:background="@drawable/gradients_anim"
     tools:context=".Progress">
 
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+    </ListView>
+
 </android.support.constraint.ConstraintLayout>

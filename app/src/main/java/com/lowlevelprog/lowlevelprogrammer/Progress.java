@@ -7,25 +7,29 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.os.CountDownTimer;
+import android.widget.TextView;
 
 public class Progress extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
+    TextView textView;
 
-    // Array of score values
+    // определяем строковый массив
     String[] scoreValues = new String[]{
-            "\u20BF 34000", "\u20BF 24000", "\u20BF 19000", "\u20BF 14000", "\u20BF 9000",
-            "\u20BF 7000", "\u20BF 5000", "\u20BF 3000", "\u20BF 2000", "\u20BF 1000"
+            "\u20BF 80000", "\u20BF 40000", "\u20BF 25000", "\u20BF 15000", "\u20BF 10000",
+            "\u20BF 7000", "\u20BF 5000", "\u20BF 2000", "\u20BF 500", "\u20BF 100"
     };
     // Bars
-    int[] barImage = new int[] {
+    int[] barImage = new int[]{
             R.drawable.dark_bar
     };
 
@@ -41,24 +45,27 @@ public class Progress extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
 
+        // получаем экземпляр элемента ListView
+        ListView listView = findViewById(R.id.listView);
+
+        // используем адаптер данных
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, scoreValues);
+
+        listView.setAdapter(adapter);
+
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long l) {
+                textView.setText(" " + l/ 1000);
+            }
+
+            public void onFinish() {
+                textView.setText("-");
+            }
+        }.start();
+
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Вы точно хотите покинуть игру?");
-        alertDialogBuilder.setPositiveButton("1", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(Progress.this, LocalGame.class);
-                startActivity(intent);
-                finish();
-            }
-        }).setNegativeButton("0", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
+
 }

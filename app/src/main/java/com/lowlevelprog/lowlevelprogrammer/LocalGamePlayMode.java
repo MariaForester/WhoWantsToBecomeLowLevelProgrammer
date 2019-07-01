@@ -3,6 +3,7 @@ package com.lowlevelprog.lowlevelprogrammer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
     TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
+    TextView textView;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -79,6 +81,16 @@ public class LocalGamePlayMode extends AppCompatActivity {
         question = listForRandomChoices1.get(0);
         setNumber = 0;
         setUp(question, setNumber);
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long l) {
+                textView.setText(" " + l/ 1000);
+            }
+
+            public void onFinish() {
+                textView.setText("-");
+            }
+        }.start();
     }
 
     // Resetting parameters on start
@@ -116,6 +128,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 }
 
                 setUp(question, setNumber);
+                startActivity(new Intent(this, Progress.class));
 
             } else {
                 startActivity(new Intent(this, WonGame.class));
