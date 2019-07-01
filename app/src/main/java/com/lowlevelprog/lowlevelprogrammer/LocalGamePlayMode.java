@@ -35,7 +35,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
     TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
-    TextView textView;
+    TextView textViewer;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -81,16 +81,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         question = listForRandomChoices1.get(0);
         setNumber = 0;
         setUp(question, setNumber);
-        new CountDownTimer(60000, 1000) {
 
-            public void onTick(long l) {
-                textView.setText(" " + l/ 1000);
-            }
-
-            public void onFinish() {
-                textView.setText("-");
-            }
-        }.start();
     }
 
     // Resetting parameters on start

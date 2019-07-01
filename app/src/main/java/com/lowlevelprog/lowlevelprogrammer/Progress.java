@@ -1,19 +1,13 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
@@ -21,7 +15,7 @@ public class Progress extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
-    TextView textView;
+    TextView textViewer;
 
     // определяем строковый массив
     String[] scoreValues = new String[]{
@@ -53,17 +47,17 @@ public class Progress extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, scoreValues);
 
         listView.setAdapter(adapter);
-
         new CountDownTimer(60000, 1000) {
 
             public void onTick(long l) {
-                textView.setText(" " + l/ 1000);
+                textViewer.setText(" " + l/ 1000);
             }
 
             public void onFinish() {
-                textView.setText("-");
+                textViewer.setText("-");
             }
         }.start();
+        startActivity(new Intent(this, Progress.class));
 
     }
 
