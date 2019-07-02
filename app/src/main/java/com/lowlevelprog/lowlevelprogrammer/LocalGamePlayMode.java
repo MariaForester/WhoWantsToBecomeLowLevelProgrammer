@@ -83,7 +83,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
         setNumber = 0;
         setUp(question, setNumber);
         textViewer = findViewById(R.id.local_game_play_mode_counter);
-
         new CountDownTimer(30000, 1000) {
 
             public void onTick(long l) {
@@ -118,7 +117,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
         if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
             score = query.calculateAnswer(setNumber, score);
-            //startActivity(new Intent(this, Progress.class));
+            startActivity(new Intent(this, Progress.class));
 
             number++;
             if (number < query.count()) {
@@ -138,7 +137,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 }
 
                 setUp(question, setNumber);
-                startActivity(new Intent(this, Progress.class));
+                //startActivity(new Intent(this, Progress.class));
             } else {
                 startActivity(new Intent(this, WonGame.class));
                 finish();

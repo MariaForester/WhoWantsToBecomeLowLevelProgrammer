@@ -7,16 +7,16 @@ import android.graphics.drawable.AnimationDrawable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-
-import com.firebase.client.Firebase;
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
 
 public class WonGame extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
+    ImageView winImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,13 @@ public class WonGame extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
+
+        // Image from Firebase
+        winImage = findViewById(R.id.imageView_win);
+        String winUrl = "https://firebasestorage.googleapis.com/v0/b/low-level-programmer.appspot." +
+                "com/o/LocWIn%2FWebp.net-resizeimage.png?alt=media&token=41f7d58d-421f-4b32-a1ab-" +
+                "4561e9d4fd33";
+        Glide.with(getApplicationContext()).load(winUrl).into(winImage);
     }
 
     public void backHome(View view) {

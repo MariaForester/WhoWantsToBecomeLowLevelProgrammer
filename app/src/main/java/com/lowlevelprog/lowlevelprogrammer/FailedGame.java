@@ -8,11 +8,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
 
 public class FailedGame extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
+    ImageView failImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,12 @@ public class FailedGame extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
+
+        // Image from Firebase
+        failImage = findViewById(R.id.imageView_fail);
+        String winUrl = "https://firebasestorage.googleapis.com/v0/b/low-level-programmer.appspot." +
+                "com/o/LocFail%2Ffailure.png?alt=media&token=a077da4e-b1a2-4e06-844c-6371ffb1067f";
+        Glide.with(getApplicationContext()).load(winUrl).into(failImage);
     }
 
 
