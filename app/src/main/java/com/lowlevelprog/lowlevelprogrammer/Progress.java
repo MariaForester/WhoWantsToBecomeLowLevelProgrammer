@@ -2,12 +2,10 @@ package com.lowlevelprog.lowlevelprogrammer;
 
 import android.graphics.drawable.AnimationDrawable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import android.os.CountDownTimer;
 import android.widget.TextView;
 

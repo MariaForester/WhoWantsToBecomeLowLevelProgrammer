@@ -66,4 +66,5 @@
         app:rippleColor="#33AAAAAA"
         app:strokeColor="@color/colorPrimary"
         app:strokeWidth="0.5dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

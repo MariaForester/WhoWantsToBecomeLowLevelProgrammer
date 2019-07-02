@@ -3,10 +3,6 @@ package com.lowlevelprog.lowlevelprogrammer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -14,6 +10,11 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,6 +38,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
     DecimalFormat decimalFormat;
     String pattern;
     TextView textViewer;
+    CountDownTimer cdt;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -83,15 +85,15 @@ public class LocalGamePlayMode extends AppCompatActivity {
         setNumber = 0;
         setUp(question, setNumber);
         textViewer = findViewById(R.id.local_game_play_mode_counter);
-        new CountDownTimer(30000, 1000) {
+        cdt = new CountDownTimer(30000, 1000) {
 
             public void onTick(long l) {
-                textViewer.setText(String.valueOf(l/ 1000));
+                textViewer.setText(String.valueOf(l / 1000));
             }
 
             public void onFinish() {
-                textViewer.setText("-");
-                finish();
+                textViewer.setText(R.string.time_over_rus);
+                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
             }
         }.start();
 
@@ -103,14 +105,16 @@ public class LocalGamePlayMode extends AppCompatActivity {
         answer = findViewById(radioID);
 
         textViewer = findViewById(R.id.local_game_play_mode_counter);
-        new CountDownTimer(35000, 1000) {
+
+        cdt.cancel();
+        cdt = new CountDownTimer(35000, 1000) {
 
             public void onTick(long l) {
-                textViewer.setText(String.valueOf(l/ 1000));
+                textViewer.setText(String.valueOf(l / 1000));
             }
 
             public void onFinish() {
-                textViewer.setText("Time is over:(");
+                textViewer.setText(R.string.time_over_rus);
                 startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
             }
         }.start();
@@ -139,10 +143,12 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 setUp(question, setNumber);
                 //startActivity(new Intent(this, Progress.class));
             } else {
+                cdt.cancel();
                 startActivity(new Intent(this, WonGame.class));
                 finish();
             }
         } else {
+            cdt.cancel();
             startActivity(new Intent(this, FailedGame.class));
             finish();
         }
