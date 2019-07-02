@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -100,9 +102,13 @@ public class LocalGamePlayMode extends AppCompatActivity {
     // Actions when one of the answer buttons is pressed
     public void btnPressed(View v) {
         int radioID = radioGroup.getCheckedRadioButtonId();
+        if (radioID == -1) {    // ни один ответ не выбран
+            Toast.makeText(getApplicationContext(), "Выберите ответ",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         answer = findViewById(radioID);
         textViewer = findViewById(R.id.local_game_play_mode_counter);
-
 
         cdt.cancel();
         cdt = new CountDownTimer(35000, 1000) {
