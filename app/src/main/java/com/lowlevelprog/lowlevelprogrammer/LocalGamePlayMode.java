@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ public class LocalGamePlayMode extends AppCompatActivity {
     List<Integer> listForRandomChoices4;
     int question, setNumber;
 
+    ImageButton callBtn;
+
     // OnCreate view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,23 @@ public class LocalGamePlayMode extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
+
+        // Отправка вопроса в Whatsapp (помощь друга)
+        callBtn = findViewById(R.id.btn_call_help);
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Вопрос");
+                try {
+                    startActivity(whatsappIntent);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         pattern = "\u20BF###,###.###";   // for the score (in currency)
         decimalFormat = new DecimalFormat(pattern);
