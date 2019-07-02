@@ -170,6 +170,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         radios[1] = findViewById(R.id.option_2);
         radios[2] = findViewById(R.id.option_3);
         radios[3] = findViewById(R.id.option_4);
+
     }
 
     @Override
