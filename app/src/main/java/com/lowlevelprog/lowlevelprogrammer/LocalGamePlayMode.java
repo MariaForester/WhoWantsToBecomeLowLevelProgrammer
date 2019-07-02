@@ -103,6 +103,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         answer = findViewById(radioID);
         textViewer = findViewById(R.id.local_game_play_mode_counter);
 
+
         cdt.cancel();
         cdt = new CountDownTimer(35000, 1000) {
 
