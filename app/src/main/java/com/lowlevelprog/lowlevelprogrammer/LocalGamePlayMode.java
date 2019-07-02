@@ -101,7 +101,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
     public void btnPressed(View v) {
         int radioID = radioGroup.getCheckedRadioButtonId();
         answer = findViewById(radioID);
-
         textViewer = findViewById(R.id.local_game_play_mode_counter);
 
         cdt.cancel();
