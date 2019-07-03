@@ -35,7 +35,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
     RadioButton[] radios;
     String[] choices;
     int number;
-    int score;
+    static int score;
     TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
