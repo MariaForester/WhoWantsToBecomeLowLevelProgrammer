@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,7 +49,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
     List<Integer> listForRandomChoices4;
     int question, setNumber;
 
-    ImageButton callBtn;
+    ImageButton callBtn, fiftyFiftyBtn;
+    int selectionIndex1, selectionIndex2;
+
+    boolean callIsUsed, fiftyFiftyIsUSed;
 
     // OnCreate view
     @Override
@@ -62,23 +66,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
-
-        // Отправка вопроса в Whatsapp (помощь друга)
-        callBtn = findViewById(R.id.btn_call_help);
-        callBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-                whatsappIntent.setType("text/plain");
-                whatsappIntent.setPackage("com.whatsapp");
-                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Вопрос");
-                try {
-                    startActivity(whatsappIntent);
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         pattern = "\u20BF###,###.###";   // for the score (in currency)
         decimalFormat = new DecimalFormat(pattern);
@@ -95,6 +82,8 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
         number = 0;
         score = 0;
+        callIsUsed = false;
+        fiftyFiftyIsUSed = false;
         radioGroup = findViewById(R.id.radioGroup);
         question_ref = findViewById(R.id.question);
         btn = findViewById(R.id.submit_loc_mode);
@@ -104,6 +93,61 @@ public class LocalGamePlayMode extends AppCompatActivity {
         question = listForRandomChoices1.get(0);
         setNumber = 0;
         setUp(question, setNumber);
+
+        // Отправка вопроса в Whatsapp (помощь друга)
+        callBtn = findViewById(R.id.btn_call_help);
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (callIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Спросить у друга'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String questionForWA = query.getQuestion(question, setNumber);
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Привет! :) Знаешь ли ты ответ на "
+                        + "вопрос: " + questionForWA + "?");
+                try {
+                    startActivity(whatsappIntent);
+                    callIsUsed = true;
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        // Оставить 2 ответа из 4
+        fiftyFiftyBtn = findViewById(R.id.btn_fifty_help);
+        fiftyFiftyBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (fiftyFiftyIsUSed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Убрать 2 неправильных ответа'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int answerIndex = query.getAnswerIndex(question, setNumber);
+                selectionIndex1 = -1;
+                selectionIndex2 = -1;
+                while (selectionIndex1 == -1 || selectionIndex1 == answerIndex) {
+                    double randomDouble = Math.random();
+                    randomDouble *= 3;
+                    selectionIndex1 = (int) randomDouble;
+                }
+                while (selectionIndex2 == -1 || selectionIndex2 == selectionIndex1 || selectionIndex2 == answerIndex) {
+                    double randomDouble = Math.random();
+                    randomDouble *= 3;
+                    selectionIndex2 = (int) randomDouble;
+                }
+                radios[selectionIndex1].setVisibility(View.INVISIBLE);
+                radios[selectionIndex2].setVisibility(View.INVISIBLE);
+                fiftyFiftyIsUSed = true;
+            }
+        });
+
         textViewer = findViewById(R.id.local_game_play_mode_counter);
         cdt = new CountDownTimer(30000, 1000) {
 
@@ -121,6 +165,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
     // Actions when one of the answer buttons is pressed
     public void btnPressed(View v) {
+        // Вернуть кнопки на место после выбора ответа
+        radios[selectionIndex1].setVisibility(View.VISIBLE);
+        radios[selectionIndex2].setVisibility(View.VISIBLE);
+
         int radioID = radioGroup.getCheckedRadioButtonId();
         if (radioID == -1) {    // ни один ответ не выбран
             Toast.makeText(getApplicationContext(), "Выберите ответ",
@@ -129,6 +177,60 @@ public class LocalGamePlayMode extends AppCompatActivity {
         }
         answer = findViewById(radioID);
         textViewer = findViewById(R.id.local_game_play_mode_counter);
+
+        // WA
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (callIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Спросить у друга'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String questionForWA = query.getQuestion(question, setNumber);
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Привет! :) Знаешь ли ты ответ на "
+                        + "вопрос: '" + questionForWA + "?'");
+                try {
+                    startActivity(whatsappIntent);
+                    callIsUsed = true;
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Оставить 2 ответа из 4
+        fiftyFiftyBtn = findViewById(R.id.btn_fifty_help);
+        fiftyFiftyBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (fiftyFiftyIsUSed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Убрать 2 неправильных ответа'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int answerIndex = query.getAnswerIndex(question, setNumber);
+                selectionIndex1 = -1;
+                selectionIndex2 = -1;
+                while (selectionIndex1 == -1 || selectionIndex1 == answerIndex) {
+                    double randomDouble = Math.random();
+                    randomDouble *= 3;
+                    selectionIndex1 = (int) randomDouble;
+                }
+                while (selectionIndex2 == -1 || selectionIndex2 == selectionIndex1 || selectionIndex2 == answerIndex) {
+                    double randomDouble = Math.random();
+                    randomDouble *= 3;
+                    selectionIndex2 = (int) randomDouble;
+                }
+                radios[selectionIndex1].setVisibility(View.INVISIBLE);
+                radios[selectionIndex2].setVisibility(View.INVISIBLE);
+                fiftyFiftyIsUSed = true;
+            }
+        });
 
         cdt.cancel();
         cdt = new CountDownTimer(35000, 1000) {
@@ -144,7 +246,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         }.start();
 
         if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
-            score = query.calculateAnswer(setNumber, score);
+            score = query.calculateScore(setNumber, score);
             startActivity(new Intent(this, Progress.class));
 
             number++;
@@ -165,7 +267,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 }
 
                 setUp(question, setNumber);
-                //startActivity(new Intent(this, Progress.class));
             } else {
                 cdt.cancel();
                 startActivity(new Intent(this, WonGame.class));
@@ -196,7 +297,6 @@ public class LocalGamePlayMode extends AppCompatActivity {
         radios[1] = findViewById(R.id.option_2);
         radios[2] = findViewById(R.id.option_3);
         radios[3] = findViewById(R.id.option_4);
-
     }
 
     @Override

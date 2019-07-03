@@ -51,7 +51,7 @@ class Helper {
     private int[] answer_set_4 = {3, 4};
 
     // adding bitcoins according to the difficulty of the question
-    int calculateAnswer(int index, int currentScore) {
+    int calculateScore(int index, int currentScore) {
         switch (index) {
             case 0:
                 return currentScore + 1000;
@@ -75,6 +75,20 @@ class Helper {
                 return question_set_3[index][answer_set_3[index]].equals(answer);
             default:
                 return question_set_4[index][answer_set_4[index]].equals(answer);
+        }
+    }
+
+    // Унать номер кнопки, на которйо написан ответ на вопрос
+    public int getAnswerIndex(int index, int setNumber){
+        switch (setNumber) {
+            case 0:
+                return answer_set_1[index] - 1;
+            case 1:
+                return answer_set_2[index] - 1;
+            case 2:
+                return answer_set_3[index] - 1;
+            default:
+                return answer_set_4[index] - 1;
         }
     }
 
