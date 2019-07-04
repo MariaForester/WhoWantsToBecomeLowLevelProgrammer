@@ -45,7 +45,7 @@ public class Progress extends AppCompatActivity {
         setContentView(R.layout.activity_progress);
 
         myLayout = findViewById(R.id.progress_lay);
-        myLinLayout = findViewById(R.id.prog_linear);
+        myLinLayout = findViewById(R.id.prog_linear_1);
 
         // animated background
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
