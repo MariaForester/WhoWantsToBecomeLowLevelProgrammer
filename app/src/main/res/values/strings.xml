@@ -22,4 +22,6 @@
     <string name="prog_btn_9">₿ 500</string>
     <string name="prog_btn_10">₿ 100</string>
     <string name="the_next_question_rus">Следующий вопрос появится через:</string>
+    <string name="fifty_fifty_description">Fifty-fifty help</string>
+    <string name="contact_friend_description">Contact friend for help</string>
 </resources>
