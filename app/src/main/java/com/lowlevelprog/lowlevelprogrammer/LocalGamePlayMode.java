@@ -70,6 +70,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         pattern = "\u20BF###,###.###";   // for the score (in currency)
         decimalFormat = new DecimalFormat(pattern);
 
+        // Getting questions from each set in random order
         listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4);
         listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4);
         listForRandomChoices3 = Arrays.asList(0, 1, 2, 3);
@@ -90,6 +91,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         reward = findViewById(R.id.reward);
         setRadios();
 
+        // Setting up the first question
         question = listForRandomChoices1.get(0);
         setNumber = 0;
         setUp(question, setNumber);
@@ -148,6 +150,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
             }
         });
 
+        // Game timer. There are only 30 seconds to submit the answer
         textViewer = findViewById(R.id.local_game_play_mode_counter);
         cdt = new CountDownTimer(30000, 1000) {
 
@@ -169,6 +172,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         radios[selectionIndex1].setVisibility(View.VISIBLE);
         radios[selectionIndex2].setVisibility(View.VISIBLE);
 
+        // Toast when nothing is clicked encouraging a user to click on some button
         int radioID = radioGroup.getCheckedRadioButtonId();
         if (radioID == -1) {    // ни один ответ не выбран
             Toast.makeText(getApplicationContext(), "Выберите ответ",
@@ -232,7 +236,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
             }
         });
 
+        // killing the timer when we are moving up to the next activity
         cdt.cancel();
+        // Setting up the timer for the next questions (5 seconds are reserved for the Progress
+        // screen)
         cdt = new CountDownTimer(35000, 1000) {
 
             public void onTick(long l) {
@@ -245,6 +252,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
             }
         }.start();
 
+        // Checking the answer. Dependence on the number of set.
         if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
             score = query.calculateScore(setNumber, score);
             startActivity(new Intent(this, Progress.class));
@@ -270,11 +278,13 @@ public class LocalGamePlayMode extends AppCompatActivity {
             } else {
                 cdt.cancel();
                 startActivity(new Intent(this, WonGame.class));
+                // All 10 answers were correct
                 finish();
             }
         } else {
             cdt.cancel();
             startActivity(new Intent(this, FailedGame.class));
+            // At least one answer was incorrect
             finish();
         }
 
@@ -299,6 +309,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         radios[3] = findViewById(R.id.option_4);
     }
 
+    // Leaving or not leaving the game on button back pressed
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

@@ -37,10 +37,12 @@ public class FailedGame extends AppCompatActivity {
     }
 
 
+    // If the user chooses to play again, the Failed Game activity closes
     public void playAgain(View view) {
         finish();
     }
 
+    // Whether to play again or not to play again
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

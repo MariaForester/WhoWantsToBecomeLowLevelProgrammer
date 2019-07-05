@@ -43,6 +43,7 @@ public class MultiplayerGame extends AppCompatActivity {
 
         myLayout = findViewById(R.id.multiplayer);
 
+        // Animated background
         animationDrawable = (AnimationDrawable) myLayout.getBackground(); // animated background
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
@@ -73,6 +74,7 @@ public class MultiplayerGame extends AppCompatActivity {
         });
     }
 
+    // Sign In Dialog for existing users
     private void signIn(final String user, final String pass) {
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -103,6 +105,7 @@ public class MultiplayerGame extends AppCompatActivity {
         });
     }
 
+    // Showing a Sign-Up window for those who does not have an account yet
     private void showSignUpDialog() {
         AlertDialog.Builder ad = new AlertDialog.Builder(MultiplayerGame.this,
                 R.style.AlertDialogStyle);

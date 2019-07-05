@@ -42,6 +42,7 @@ public class WonGame extends AppCompatActivity {
         finish();
     }
 
+    // Whether to play the game again or not
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

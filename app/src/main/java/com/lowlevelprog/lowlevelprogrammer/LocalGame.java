@@ -35,6 +35,7 @@ public class LocalGame extends AppCompatActivity {
         });
     }
 
+    // There is a button to start a game. That is what happens when it`s clicked
     public void startGame(int identifier) {
         Intent intent;
         if (identifier == R.id.but_start_loc) {
@@ -43,6 +44,7 @@ public class LocalGame extends AppCompatActivity {
         }
     }
 
+    // Closing activity when the back button is pressed
     @Override
     public void onBackPressed() {
        finish();

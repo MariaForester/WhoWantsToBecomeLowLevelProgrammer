@@ -31,16 +31,19 @@ public class MainActivity extends AppCompatActivity {
 
         myLayout = findViewById(R.id.layout_main);
 
+        // Animated background
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
 
+        // Upper text - The Title
         hTextView = findViewById(R.id.tv_htext); // block on above
         hTextView.setLineColor(R.color.textColor);
         hTextView.setAnimationListener(new SimpleAnimationListener(this));
         hTextView.animateText(getString(R.string.app_full_name));
 
+        // Clickable buttons
         button_local = findViewById(R.id.but_loc_game); // open one of game modes
         button_multiplayer = findViewById(R.id.but_multip_game);
         button_local.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Opening the game mode according to the button clicked
     public void openGameMode(int identifier) {
         Intent intent;
         if (identifier == R.id.but_loc_game)
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Animation on the title
     class SimpleAnimationListener implements AnimationListener {
 
         private Context context;
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // An opportunity to close the app on back button pressed
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -100,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    // Showing the alert dialogue if there is no connection
     @Override
     protected void onResume() {
         super.onResume();
@@ -109,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Checking if there is an Internet connection
     public boolean isConnected(Context context) throws NullPointerException {
 
         ConnectivityManager cm = (ConnectivityManager)
@@ -125,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
     }
 
+    // The alert Dialogue itself. Gives an opportunity to connect the device and restart the app
     public AlertDialog.Builder buildDialog(Context c) {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder.setCancelable(false);
