@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MultplayerHome"></activity>
         <activity android:name=".Progress"></activity>
         <activity android:name=".FailedGame" />
         <activity android:name=".LocalGamePlayMode" />

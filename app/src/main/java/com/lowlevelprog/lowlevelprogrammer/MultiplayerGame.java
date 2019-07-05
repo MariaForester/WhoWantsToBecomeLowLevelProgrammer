@@ -1,6 +1,7 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 
 import androidx.annotation.NonNull;
@@ -83,8 +84,12 @@ public class MultiplayerGame extends AppCompatActivity {
                     if (!user.isEmpty()){
                         User login = dataSnapshot.child(user).getValue(User.class);
                         if (login.getPassword().equals(pass))
-                            Toast.makeText(MultiplayerGame.this, "Вход успешен!",
-                                    Toast.LENGTH_SHORT).show();
+                        {
+                            Intent intent = new Intent(MultiplayerGame.this,
+                                    MultplayerHome.class);
+                            startActivity(intent);
+                            finish();
+                        }
                         else
                             Toast.makeText(MultiplayerGame.this, "Неверный пароль!",
                                     Toast.LENGTH_SHORT).show();

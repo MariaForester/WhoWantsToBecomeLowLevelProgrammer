@@ -28,4 +28,7 @@
     <string name="email">\tE-mail</string>
     <string name="sign_up">Sign up</string>
     <string name="sign_in">Sign in</string>
+    <string name="modes_rus">Игры</string>
+    <string name="ranking_rus">Рейтинг</string>
+    <string name="desc_home_multiplayer_image">Home Multiplayer Image</string>
 </resources>
