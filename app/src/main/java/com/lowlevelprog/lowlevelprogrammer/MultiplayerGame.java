@@ -52,11 +52,11 @@ public class MultiplayerGame extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         users = db.getReference("Users");
 
-        editUser = (MaterialEditText) findViewById(R.id.user_name_editing);
-        editPassword = (MaterialEditText) findViewById(R.id.password_editing);
+        editUser = findViewById(R.id.user_name_editing);
+        editPassword = findViewById(R.id.password_editing);
 
-        btnSignIn = (Button) findViewById(R.id.btn_sign_in);
-        btnSignUp = (Button) findViewById(R.id.btn_sign_up);
+        btnSignIn = findViewById(R.id.btn_sign_in);
+        btnSignUp = findViewById(R.id.btn_sign_up);
 
         btnSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -104,28 +104,31 @@ public class MultiplayerGame extends AppCompatActivity {
     }
 
     private void showSignUpDialog() {
-        AlertDialog.Builder ad = new AlertDialog.Builder(MultiplayerGame.this);
+        AlertDialog.Builder ad = new AlertDialog.Builder(MultiplayerGame.this,
+                R.style.AlertDialogStyle);
         ad.setTitle("Sign up");
         ad.setMessage("Пожалуйста, введите данные");
 
         LayoutInflater inf = this.getLayoutInflater();
         View signUpLayout = inf.inflate(R.layout.signing_up, null);
 
-        editNewUser = (MaterialEditText) signUpLayout.findViewById(R.id.new_user_name_editing);
-        editNewEmail = (MaterialEditText) signUpLayout.findViewById(R.id.new_email_editing);
-        editNewPassword = (MaterialEditText) signUpLayout.findViewById(R.id.new_password_editing);
+        editNewUser = signUpLayout.findViewById(R.id.new_user_name_editing);
+        editNewEmail = signUpLayout.findViewById(R.id.new_email_editing);
+        editNewPassword = signUpLayout.findViewById(R.id.new_password_editing);
 
         ad.setView(signUpLayout);
         ad.setIcon(R.drawable.ic_account_circle_black_24dp);
 
-        ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        ad.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
 
-        ad.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+        ad.setPositiveButton("Далее", new DialogInterface.OnClickListener() {
+
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 final User user = new User(editNewUser.getText().toString(),
