@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">LowLevelProgrammer</string>
-
     <string name="app_full_name">Who Wants to Become\na Low Level Programmer</string>
     <string name="local_game_rus">Локальная игра</string>
     <string name="multip_game_rus">Сетевая игра</string>
@@ -24,7 +23,9 @@
     <string name="the_next_question_rus">Следующий вопрос появится через:</string>
     <string name="fifty_fifty_description">Fifty-fifty help</string>
     <string name="contact_friend_description">Contact friend for help</string>
-    <string name="user_name_rus">Имя Пользователя</string>
-    <string name="pass_rus">Пароль</string>
-    <string name="email">E-mail</string>
+    <string name="user_name_rus">\tИмя Пользователя</string>
+    <string name="pass_rus">\tПароль</string>
+    <string name="email">\tE-mail</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
 </resources>

@@ -10,5 +10,7 @@
     <color name="textColor">#FFFFFF</color>
     <color name="transparentLightBlue">#50E1FFFF</color>
     <color name="buttons">#606894EB</color>
+    <color name="buttonsNonTransparent">#6894EB</color>
+    <color name="windowNonTransparent">#7A9ADB</color>
     <color name="darkBlue">#040424</color>
 </resources>

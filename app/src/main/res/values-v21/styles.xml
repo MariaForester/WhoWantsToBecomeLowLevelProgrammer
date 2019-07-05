@@ -4,10 +4,11 @@
     <style name="AlertDialogStyle" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:background">@color/buttons</item>
+        <item name="android:background">@color/windowNonTransparent</item>
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
         <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="android:fontFamily">@font/rex_bold</item>
     </style>
 
     <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
