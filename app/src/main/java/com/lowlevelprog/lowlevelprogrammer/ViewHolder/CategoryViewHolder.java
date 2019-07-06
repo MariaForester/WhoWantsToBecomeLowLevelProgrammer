@@ -9,26 +9,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lowlevelprog.lowlevelprogrammer.Interface.ItemClickListener;
 import com.lowlevelprog.lowlevelprogrammer.R;
 
-public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class  CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public TextView categoryName;
     public ImageView categoryImage;
 
-    private ItemClickListener icl;
+    private ItemClickListener itemClickListener;
 
     public CategoryViewHolder(View itemView) {
         super(itemView);
-        categoryName = itemView.findViewById(R.id.text_categories);
-        categoryImage = itemView.findViewById(R.id.image_categories);
-        itemView.setOnClickListener(this);
+        categoryName = (TextView)itemView.findViewById(R.id.name_categories);
+        categoryImage = (ImageView)itemView.findViewById(R.id.image_categories);
+        itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                itemClickListener.onItemClick(view, getAdapterPosition());
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-        icl.onClick(view, getAdapterPosition(), false);
+        itemClickListener.onItemClick(view, getAdapterPosition());
     }
 
-    public void setIcl(ItemClickListener icl){
-        this.icl = icl;
+    public void setItemClickListener(ItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
     }
 }

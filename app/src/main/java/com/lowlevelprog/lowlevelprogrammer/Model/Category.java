@@ -8,8 +8,8 @@ public class Category {
     }
 
     public Category(String name, String image){
-        this.Name = name;
-        this.Image = image;
+        Name = name;
+        Image = image;
     }
 
     public String getName() {
@@ -17,7 +17,7 @@ public class Category {
     }
 
     public void setName(String name) {
-        this.Name = name;
+        Name = name;
     }
 
     public String getImage() {
@@ -25,6 +25,6 @@ public class Category {
     }
 
     public void setImage(String image) {
-        this.Image = image;
+        Image = image;
     }
 }

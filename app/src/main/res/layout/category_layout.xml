@@ -8,16 +8,18 @@
     <ImageButton
         android:id="@+id/image_categories"
         android:layout_width="match_parent"
-        android:contentDescription=""
         android:layout_height="match_parent"
+        android:clickable="false"
+        android:contentDescription="@string/desc_home_multiplayer_image"
+        android:focusable="false"
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/text_categories"
+        android:id="@+id/name_categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/transparentLightBlue"
         android:gravity="center"
         android:text="Mode Name"
         android:textColor="#FFFFFF"

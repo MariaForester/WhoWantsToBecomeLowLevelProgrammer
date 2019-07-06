@@ -1,5 +1,6 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lowlevelprog.lowlevelprogrammer.Interface.ItemClickListener;
@@ -24,12 +26,12 @@ import com.squareup.picasso.Picasso;
 
 public class CategoryFragment extends Fragment {
 
-    private View categoryFragment;
-    private RecyclerView listCategory;
-    private RecyclerView.LayoutManager lm;
-    private FirebaseRecyclerAdapter<Category, CategoryViewHolder> fbAdapter;
-    private FirebaseDatabase db;
-    private DatabaseReference categories;
+    View myFragment;
+    RecyclerView listCategory;
+    RecyclerView.LayoutManager lm;
+    FirebaseRecyclerAdapter<Category, CategoryViewHolder> fbAdapter;
+    FirebaseDatabase db;
+    DatabaseReference categories;
 
     public static CategoryFragment newInstance() {
         CategoryFragment categoryFragment = new CategoryFragment();
@@ -48,16 +50,17 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        categoryFragment = inflater.inflate(R.layout.fragment_category, container,
+        myFragment = inflater.inflate(R.layout.fragment_category, container,
                 false);
-        listCategory = categoryFragment.findViewById(R.id.list_categories);
+
+        listCategory = (RecyclerView) myFragment.findViewById(R.id.list_categories);
         listCategory.setHasFixedSize(true);
         lm = new LinearLayoutManager(container.getContext());
         listCategory.setLayoutManager(lm);
 
         loadCategories();
 
-        return categoryFragment;
+        return myFragment;
     }
 
     private void loadCategories() {
@@ -67,16 +70,18 @@ public class CategoryFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(CategoryViewHolder viewHolder,
-                                              final Category category, int i) {
-                viewHolder.categoryName.setText(category.getName());
-                Picasso.with(getActivity()).load(category.getImage()).into(viewHolder.categoryImage);
+                                              final Category model, int i) {
+                viewHolder.categoryName.setText(model.getName());
+                Picasso.with(getActivity()).load(model.getImage()).into(viewHolder.categoryImage);
 
-                viewHolder.setIcl(new ItemClickListener() {
+                viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
+                    public void onItemClick(View view, int position) {
                         Toast.makeText(getActivity(), String.format("%s|%s",
-                                fbAdapter.getRef(position).getKey(), category.getName()),
+                                fbAdapter.getRef(position).getKey(), model.getName()),
                                 Toast.LENGTH_SHORT).show();
+                     /*   Intent startGame = new Intent(getActivity(), MainActivity.class);
+                        startActivity(startGame);*/
                     }
                 });
             }
