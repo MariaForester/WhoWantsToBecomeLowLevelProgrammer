@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -34,12 +35,13 @@ public class SimpleMode extends AppCompatActivity {
     RadioButton[] radios;
     String[] choices;
     int number;
-    static int score;
+    int score;
     TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
     TextView textViewer;
     CountDownTimer cdt;
+    static List<Integer> listForProgress;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -60,6 +62,8 @@ public class SimpleMode extends AppCompatActivity {
         setContentView(R.layout.activity_simple_mode);
 
         myLayout = findViewById(R.id.simple_play_mode);
+
+        listForProgress = new ArrayList<>();
 
         animationDrawable = (AnimationDrawable) myLayout.getBackground(); // animated background
         animationDrawable.setEnterFadeDuration(4500);
@@ -253,7 +257,11 @@ public class SimpleMode extends AppCompatActivity {
         // Checking the answer. Dependence on the number of set.
         if (query.checkAnswer(question, answer.getText().toString(), setNumber))
             score = query.calculateScore(setNumber, score);
-            startActivity(new Intent(SimpleMode.this, ProgressSimple.class));
+        listForProgress.add(score);
+
+        Intent intent = new Intent(SimpleMode.this, ProgressSimple.class);
+        startActivity(intent);
+
 
         number++;
         if (number < query.count()) {

@@ -31,4 +31,5 @@
     <string name="modes_rus">Игры</string>
     <string name="ranking_rus">Рейтинг</string>
     <string name="desc_home_multiplayer_image">Home Multiplayer Image</string>
+    <string name="question_signs">"???"</string>
 </resources>

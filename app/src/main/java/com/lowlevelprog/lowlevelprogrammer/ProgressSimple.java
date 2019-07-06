@@ -7,12 +7,12 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ProgressSimple extends AppCompatActivity {
@@ -30,10 +30,6 @@ public class ProgressSimple extends AppCompatActivity {
             R.id.progress_btn9_simple, R.id.progress_btn10_simple
     };
 
-    // определяем строковый массив
-    List<Integer> scoreValues = new ArrayList<>(
-            Arrays.asList(34000, 24000, 19000, 14000, 9000, 7000, 5000, 3000, 2000, 1000));
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,25 +43,25 @@ public class ProgressSimple extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
-/*
+
         // Coloring buttons (unactivated)
         for (int i = 0; i < buttonsIDs.length; i++) {
             progressButtons[i] = findViewById(buttonsIDs[i]);
             progressButtons[i].getBackground().setColorFilter(new
                     LightingColorFilter(0xFF292973, 0x00000000));
+            progressButtons[i].setText(R.string.question_signs);
             progressButtons[i].invalidate();
         }
 
-        // For buttons with correct answers
-        int myScore = LocalGamePlayMode.score;
-        int indexRecolor = scoreValues.indexOf(myScore);
-        for (int i = 9; i >= indexRecolor; i--) {
+        // На каждом шаге отображение текущего счета
+        List<Integer> listOfScores = SimpleMode.listForProgress;
+        for (int i = 9; i > 9 - listOfScores.size(); i--){
             progressButtons[i] = findViewById(buttonsIDs[i]);
             progressButtons[i].getBackground().setColorFilter(new
                     LightingColorFilter(0xFFFFBC00, 0x00000000));
+            progressButtons[i].setText(String.valueOf(listOfScores.get(9 - i)));
             progressButtons[i].invalidate();
         }
-        // find in list of score value (by value) and recolor all until the index*/
 
         textViewer = findViewById(R.id.progress_counter_simple);
         // Timer
@@ -82,8 +78,11 @@ public class ProgressSimple extends AppCompatActivity {
         }.start();
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
+
+    @Override   // disabling back button during the splash screen
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).getView();
+        return false;
     }
 }
