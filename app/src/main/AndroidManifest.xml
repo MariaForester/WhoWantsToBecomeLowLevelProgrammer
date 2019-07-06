@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SimpleMode"></activity>
+        <activity android:name=".ProgressSimple"></activity>
+        <activity android:name=".SimpleMode" />
         <activity android:name=".MultplayerHome" />
         <activity android:name=".Progress" />
         <activity android:name=".FailedGame" />

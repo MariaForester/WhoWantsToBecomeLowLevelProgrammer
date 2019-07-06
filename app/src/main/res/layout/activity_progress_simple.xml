@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progress_lay_simple"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradients_anim"
+    tools:context=".Progress">
+
+
+    <LinearLayout
+        android:id="@+id/prog_linear_1_simple"
+        android:layout_width="373dp"
+        android:layout_height="612dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prog_linear_2_simple"
+        app:layout_constraintVertical_bias="0.875">
+
+
+        <Button
+            android:id="@+id/progress_btn1_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="@string/prog_btn_1"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn2_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_2"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn3_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_3"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn4_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_4"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn5_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_5"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn6_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_6"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn7_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_7"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn8_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_8"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn9_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_9"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+
+        <Button
+            android:id="@+id/progress_btn10_simple"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:text="@string/prog_btn_10"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/prog_linear_2_simple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <TextView
+            android:id="@+id/textView_fail_simple"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="80"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="@string/the_next_question_rus"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:fontFamily="@font/rex_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.016" />
+
+        <TextView
+            android:id="@+id/progress_counter_simple"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="TextView"
+            android:textColor="@color/textColor"
+            app:fontFamily="@font/rex_bold_inline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.039" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

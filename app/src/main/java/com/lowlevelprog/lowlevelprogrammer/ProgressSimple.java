@@ -1,23 +1,21 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.AnimationDrawable;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.os.CountDownTimer;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Progress extends AppCompatActivity {
+public class ProgressSimple extends AppCompatActivity {
 
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
@@ -25,9 +23,11 @@ public class Progress extends AppCompatActivity {
     LinearLayout myLinLayout;
     Button[] progressButtons = new Button[10];
     int[] buttonsIDs = new int[]{
-            R.id.progress_btn1, R.id.progress_btn2, R.id.progress_btn3, R.id.progress_btn4,
-            R.id.progress_btn5, R.id.progress_btn6, R.id.progress_btn7, R.id.progress_btn8,
-            R.id.progress_btn9, R.id.progress_btn10
+            R.id.progress_btn1_simple, R.id.progress_btn2_simple, R.id.progress_btn3_simple,
+            R.id.progress_btn4_simple,
+            R.id.progress_btn5_simple, R.id.progress_btn6_simple, R.id.progress_btn7_simple,
+            R.id.progress_btn8_simple,
+            R.id.progress_btn9_simple, R.id.progress_btn10_simple
     };
 
     // определяем строковый массив
@@ -37,17 +37,17 @@ public class Progress extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress);
+        setContentView(R.layout.activity_progress_simple);
 
-        myLayout = findViewById(R.id.progress_lay);
-        myLinLayout = findViewById(R.id.prog_linear_1);
+        myLayout = findViewById(R.id.progress_lay_simple);
+        myLinLayout = findViewById(R.id.prog_linear_1_simple);
 
         // animated background
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
         animationDrawable.setEnterFadeDuration(4500);
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
-
+/*
         // Coloring buttons (unactivated)
         for (int i = 0; i < buttonsIDs.length; i++) {
             progressButtons[i] = findViewById(buttonsIDs[i]);
@@ -65,9 +65,9 @@ public class Progress extends AppCompatActivity {
                     LightingColorFilter(0xFFFFBC00, 0x00000000));
             progressButtons[i].invalidate();
         }
-        // find in list of score value (by value) and recolor all until the index
+        // find in list of score value (by value) and recolor all until the index*/
 
-        textViewer = findViewById(R.id.progress_counter);
+        textViewer = findViewById(R.id.progress_counter_simple);
         // Timer
         new CountDownTimer(5000, 1000) {
 

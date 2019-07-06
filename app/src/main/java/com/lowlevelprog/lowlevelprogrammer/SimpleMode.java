@@ -251,40 +251,33 @@ public class SimpleMode extends AppCompatActivity {
         }.start();
 
         // Checking the answer. Dependence on the number of set.
-        if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
+        if (query.checkAnswer(question, answer.getText().toString(), setNumber))
             score = query.calculateScore(setNumber, score);
+            startActivity(new Intent(SimpleMode.this, ProgressSimple.class));
 
-            number++;
-            if (number < query.count()) {
-                radioGroup.clearCheck();
-                if (number < 3) {
-                    question = listForRandomChoices1.get(number);
-                    setNumber = 0;
-                } else if (number < 6) {
-                    question = listForRandomChoices2.get(number - 3);
-                    setNumber = 1;
-                } else if (number < 9) {
-                    setNumber = 2;
-                    question = listForRandomChoices3.get(number - 6);
-                } else {
-                    setNumber = 3;
-                    question = listForRandomChoices4.get(number - 9);
-                }
-
-                setUp(question, setNumber);
+        number++;
+        if (number < query.count()) {
+            radioGroup.clearCheck();
+            if (number < 3) {
+                question = listForRandomChoices1.get(number);
+                setNumber = 0;
+            } else if (number < 6) {
+                question = listForRandomChoices2.get(number - 3);
+                setNumber = 1;
+            } else if (number < 9) {
+                setNumber = 2;
+                question = listForRandomChoices3.get(number - 6);
             } else {
-                cdt.cancel();
-                startActivity(new Intent(this, WonGame.class));
-                // All 10 answers were correct
-                finish();
+                setNumber = 3;
+                question = listForRandomChoices4.get(number - 9);
             }
+
+            setUp(question, setNumber);
         } else {
             cdt.cancel();
-            startActivity(new Intent(this, FailedGame.class));
-            // At least one answer was incorrect
+            startActivity(new Intent(this, WonGame.class));
             finish();
         }
-
     }
 
     // Setting up the questions with corresponding answers
