@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lowlevelprog.lowlevelprogrammer.Interface.ItemClickListener;
@@ -53,7 +52,7 @@ public class CategoryFragment extends Fragment {
         myFragment = inflater.inflate(R.layout.fragment_category, container,
                 false);
 
-        listCategory = (RecyclerView) myFragment.findViewById(R.id.list_categories);
+        listCategory = myFragment.findViewById(R.id.list_categories);
         listCategory.setHasFixedSize(true);
         lm = new LinearLayoutManager(container.getContext());
         listCategory.setLayoutManager(lm);
@@ -80,8 +79,10 @@ public class CategoryFragment extends Fragment {
                         Toast.makeText(getActivity(), String.format("%s|%s",
                                 fbAdapter.getRef(position).getKey(), model.getName()),
                                 Toast.LENGTH_SHORT).show();
-                     /*   Intent startGame = new Intent(getActivity(), MainActivity.class);
-                        startActivity(startGame);*/
+                        if (fbAdapter.getRef(position).getKey().equals("01")) {
+                            Intent startGame = new Intent(getActivity(), SimpleMode.class);
+                            startActivity(startGame);
+                        }
                     }
                 });
             }

@@ -1,5 +1,9 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -13,17 +17,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LocalGamePlayMode extends AppCompatActivity {
-
+public class SimpleMode extends AppCompatActivity {
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
 
@@ -58,9 +57,9 @@ public class LocalGamePlayMode extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_game_play_mode);
+        setContentView(R.layout.activity_simple_mode);
 
-        myLayout = findViewById(R.id.local_game_play_mode);
+        myLayout = findViewById(R.id.simple_play_mode);
 
         animationDrawable = (AnimationDrawable) myLayout.getBackground(); // animated background
         animationDrawable.setEnterFadeDuration(4500);
@@ -84,10 +83,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
         score = 0;
         callIsUsed = false;
         fiftyFiftyIsUSed = false;
-        radioGroup = findViewById(R.id.radioGroup);
-        question_ref = findViewById(R.id.question);
-        btn = findViewById(R.id.submit_loc_mode);
-        reward = findViewById(R.id.reward);
+        radioGroup = findViewById(R.id.simple_radioGroup);
+        question_ref = findViewById(R.id.simple_question);
+        btn = findViewById(R.id.submit_simple_mode);
+        reward = findViewById(R.id.reward_simple);
         setRadios();
 
         // Setting up the first question
@@ -96,7 +95,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         setUp(question, setNumber);
 
         // Отправка вопроса в Whatsapp (помощь друга)
-        callBtn = findViewById(R.id.btn_call_help);
+        callBtn = findViewById(R.id.simple_call_help);
         callBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (callIsUsed) {
@@ -121,7 +120,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
             }
         });
         // Оставить 2 ответа из 4
-        fiftyFiftyBtn = findViewById(R.id.btn_fifty_help);
+        fiftyFiftyBtn = findViewById(R.id.simple_fifty_help);
         fiftyFiftyBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (fiftyFiftyIsUSed) {
@@ -150,7 +149,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         });
 
         // Game timer. There are only 30 seconds to submit the answer
-        textViewer = findViewById(R.id.local_game_play_mode_counter);
+        textViewer = findViewById(R.id.simple_mode_counter);
         cdt = new CountDownTimer(30000, 1000) {
 
             public void onTick(long l) {
@@ -159,7 +158,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
             public void onFinish() {
                 textViewer.setText(R.string.time_over_rus);
-                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
+                startActivity(new Intent(SimpleMode.this, FailedGame.class));
             }
         }.start();
 
@@ -179,7 +178,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
             return;
         }
         answer = findViewById(radioID);
-        textViewer = findViewById(R.id.local_game_play_mode_counter);
+        textViewer = findViewById(R.id.simple_mode_counter);
 
         // WA
         callBtn.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +206,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         });
 
         // Оставить 2 ответа из 4
-        fiftyFiftyBtn = findViewById(R.id.btn_fifty_help);
+        fiftyFiftyBtn = findViewById(R.id.simple_fifty_help);
         fiftyFiftyBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (fiftyFiftyIsUSed) {
@@ -247,14 +246,13 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
             public void onFinish() {
                 textViewer.setText(R.string.time_over_rus);
-                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
+                startActivity(new Intent(SimpleMode.this, FailedGame.class));
             }
         }.start();
 
         // Checking the answer. Dependence on the number of set.
         if (query.checkAnswer(question, answer.getText().toString(), setNumber)) {
             score = query.calculateScore(setNumber, score);
-            startActivity(new Intent(this, Progress.class));
 
             number++;
             if (number < query.count()) {
@@ -302,10 +300,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
     // Setting ujp list of questions (its view)
     private void setRadios() {
         radios = new RadioButton[4];
-        radios[0] = findViewById(R.id.option_1);
-        radios[1] = findViewById(R.id.option_2);
-        radios[2] = findViewById(R.id.option_3);
-        radios[3] = findViewById(R.id.option_4);
+        radios[0] = findViewById(R.id.simple_option_1);
+        radios[1] = findViewById(R.id.simple_option_2);
+        radios[2] = findViewById(R.id.simple_option_3);
+        radios[3] = findViewById(R.id.simple_option_4);
     }
 
     // Leaving or not leaving the game on button back pressed
@@ -315,7 +313,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         alertDialogBuilder.setTitle("Вы точно хотите покинуть игру?");
         alertDialogBuilder.setPositiveButton("1", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(LocalGamePlayMode.this, MainActivity.class);
+                Intent intent = new Intent(SimpleMode.this, MultplayerHome.class);
                 startActivity(intent);
                 finish();
             }
