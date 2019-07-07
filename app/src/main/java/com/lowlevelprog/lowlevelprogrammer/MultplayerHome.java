@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.lowlevelprog.lowlevelprogrammer.Model.Category;
-
 
 public class MultplayerHome extends AppCompatActivity {
 

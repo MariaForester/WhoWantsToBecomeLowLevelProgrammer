@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.internal.service.Common;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.lowlevelprog.lowlevelprogrammer.Model.QuestionScore;
 
 public class ScoreSimple extends AppCompatActivity {
 
@@ -20,6 +24,8 @@ public class ScoreSimple extends AppCompatActivity {
     AnimationDrawable animationDrawable;
     ImageView scoreSimpleImage;
     TextView scoreSimpleTextView;
+    FirebaseDatabase db;
+    DatabaseReference questionsScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,14 @@ public class ScoreSimple extends AppCompatActivity {
                 "appspot.com/o/OnlineGame%2FSimple%2Fscoore.png?alt=media&token=371c1a83-9c24-" +
                 "48eb-b3d3-541aae43070d";
         Glide.with(getApplicationContext()).load(scoreUrl).into(scoreSimpleImage);
+
+        db = FirebaseDatabase.getInstance();
+        questionsScore = db.getReference("QuestionScore");
+
+        questionsScore.child(String.format("%s", OnlineHelper.currentUser.getUserName()))
+                .setValue(new QuestionScore(String.format("%s", OnlineHelper.currentUser.getUserName()),
+                        OnlineHelper.currentUser.getUserName(),
+                        String.valueOf(SimpleMode.score)));
     }
 
     public void backHome(View view) {

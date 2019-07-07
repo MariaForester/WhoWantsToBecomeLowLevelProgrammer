@@ -87,6 +87,7 @@ public class MultiplayerGame extends AppCompatActivity {
                         {
                             Intent intent = new Intent(MultiplayerGame.this,
                                     MultplayerHome.class);
+                            OnlineHelper.currentUser = login;
                             startActivity(intent);
                             finish();
                         }
