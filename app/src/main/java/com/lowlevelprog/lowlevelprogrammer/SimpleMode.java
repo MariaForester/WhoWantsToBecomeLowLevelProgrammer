@@ -35,7 +35,7 @@ public class SimpleMode extends AppCompatActivity {
     RadioButton[] radios;
     String[] choices;
     int number;
-    int score;
+    static int score;
     TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
@@ -262,7 +262,6 @@ public class SimpleMode extends AppCompatActivity {
         Intent intent = new Intent(SimpleMode.this, ProgressSimple.class);
         startActivity(intent);
 
-
         number++;
         if (number < query.count()) {
             radioGroup.clearCheck();
@@ -283,7 +282,7 @@ public class SimpleMode extends AppCompatActivity {
             setUp(question, setNumber);
         } else {
             cdt.cancel();
-            startActivity(new Intent(this, WonGame.class));
+            startActivity(new Intent(this, ScoreSimple.class));
             finish();
         }
     }

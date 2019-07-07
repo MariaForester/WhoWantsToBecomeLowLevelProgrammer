@@ -59,7 +59,8 @@ public class ProgressSimple extends AppCompatActivity {
             progressButtons[i] = findViewById(buttonsIDs[i]);
             progressButtons[i].getBackground().setColorFilter(new
                     LightingColorFilter(0xFFFFBC00, 0x00000000));
-            progressButtons[i].setText(String.valueOf(listOfScores.get(9 - i)));
+            String str = "\u20BF" + listOfScores.get(9 - i);
+            progressButtons[i].setText(str);
             progressButtons[i].invalidate();
         }
 

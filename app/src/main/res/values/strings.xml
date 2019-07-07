@@ -32,4 +32,5 @@
     <string name="ranking_rus">Рейтинг</string>
     <string name="desc_home_multiplayer_image">Home Multiplayer Image</string>
     <string name="question_signs">"???"</string>
+    <string name="score_simple_rus">Ваш счет:</string>
 </resources>
