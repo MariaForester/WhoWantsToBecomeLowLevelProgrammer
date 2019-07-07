@@ -20,20 +20,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lowlevelprog.lowlevelprogrammer.Interface.ItemClickListener;
 import com.lowlevelprog.lowlevelprogrammer.Model.Category;
-import com.lowlevelprog.lowlevelprogrammer.ViewHolder.CategoryViewHolder;
+import com.lowlevelprog.lowlevelprogrammer.ViewHolder.ModeViewHolder;
 import com.squareup.picasso.Picasso;
 
-public class CategoryFragment extends Fragment {
+public class ModeFragment extends Fragment {
 
     View myFragment;
     RecyclerView listCategory;
     RecyclerView.LayoutManager lm;
-    FirebaseRecyclerAdapter<Category, CategoryViewHolder> fbAdapter;
+    FirebaseRecyclerAdapter<Category, ModeViewHolder> fbAdapter;
     FirebaseDatabase db;
     DatabaseReference categories;
 
-    public static CategoryFragment newInstance() {
-        CategoryFragment categoryFragment = new CategoryFragment();
+    public static ModeFragment newInstance() {
+        ModeFragment categoryFragment = new ModeFragment();
         return categoryFragment;
     }
 
@@ -63,12 +63,12 @@ public class CategoryFragment extends Fragment {
     }
 
     private void loadCategories() {
-        fbAdapter = new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(
-                Category.class, R.layout.category_layout, CategoryViewHolder.class,
+        fbAdapter = new FirebaseRecyclerAdapter<Category, ModeViewHolder>(
+                Category.class, R.layout.category_layout, ModeViewHolder.class,
                 categories
         ) {
             @Override
-            protected void populateViewHolder(CategoryViewHolder viewHolder,
+            protected void populateViewHolder(ModeViewHolder viewHolder,
                                               final Category model, int i) {
                 viewHolder.categoryName.setText(model.getName());
                 Picasso.with(getActivity()).load(model.getImage()).into(viewHolder.categoryImage);

@@ -39,7 +39,7 @@ public class MultplayerHome extends AppCompatActivity {
                         Fragment selection = null;
                         switch (menuItem.getItemId()) {
                             case R.id.action_category:
-                                selection = CategoryFragment.newInstance();
+                                selection = ModeFragment.newInstance();
                                 break;
                             case R.id.action_ranking:
                                 selection = RankingFragment.newInstance();
@@ -56,7 +56,7 @@ public class MultplayerHome extends AppCompatActivity {
 
     private void setDefaultFragment(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_multiplayer_home, CategoryFragment.newInstance());
+        transaction.replace(R.id.frame_multiplayer_home, ModeFragment.newInstance());
         transaction.commit();
     }
 }

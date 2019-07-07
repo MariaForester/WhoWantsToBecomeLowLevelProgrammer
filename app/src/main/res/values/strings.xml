@@ -33,4 +33,6 @@
     <string name="desc_home_multiplayer_image">Home Multiplayer Image</string>
     <string name="question_signs">"???"</string>
     <string name="score_simple_rus">Ваш счет:</string>
+    <string name="name_rus">\tИмя</string>
+    <string name="score_rus">Счет</string>
 </resources>

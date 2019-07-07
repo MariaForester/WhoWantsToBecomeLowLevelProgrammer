@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lowlevelprog.lowlevelprogrammer.Interface.ItemClickListener;
 import com.lowlevelprog.lowlevelprogrammer.R;
 
-public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ModeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView categoryName;
     public ImageView categoryImage;
 
     private ItemClickListener itemClickListener;
 
-    public CategoryViewHolder(View itemView) {
+    public ModeViewHolder(View itemView) {
         super(itemView);
         categoryName = itemView.findViewById(R.id.name_categories);
         categoryImage = itemView.findViewById(R.id.image_categories);
