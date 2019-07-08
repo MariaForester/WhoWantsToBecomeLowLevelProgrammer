@@ -49,7 +49,7 @@ public class ModeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        myFragment = inflater.inflate(R.layout.fragment_category, container,
+        myFragment = inflater.inflate(R.layout.fragment_mode, container,
                 false);
 
         listCategory = myFragment.findViewById(R.id.list_categories);
@@ -64,7 +64,7 @@ public class ModeFragment extends Fragment {
 
     private void loadCategories() {
         fbAdapter = new FirebaseRecyclerAdapter<Category, ModeViewHolder>(
-                Category.class, R.layout.category_layout, ModeViewHolder.class,
+                Category.class, R.layout.mode_layout, ModeViewHolder.class,
                 categories
         ) {
             @Override
