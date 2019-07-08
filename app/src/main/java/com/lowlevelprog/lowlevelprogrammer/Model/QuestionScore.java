@@ -2,7 +2,7 @@ package com.lowlevelprog.lowlevelprogrammer.Model;
 
 
 public class QuestionScore {
-    private String QuestScore, User, Score;
+    private String QuestScore, User, Score, ModeID, ModeName;
 
     public QuestionScore() {
 
@@ -32,9 +32,28 @@ public class QuestionScore {
         Score = score;
     }
 
-    public QuestionScore(String questScore, String user, String score){
+    public String getModeID() {
+        return ModeID;
+    }
+
+    public void setModeID(String modeID) {
+        ModeID = modeID;
+    }
+
+    public String getModeName() {
+        return ModeName;
+    }
+
+    public void setModeName(String modeName) {
+        ModeName = modeName;
+    }
+
+    public QuestionScore(String questScore, String user, String score, String modeID,
+                         String modeName) {
         QuestScore = questScore;
         User = user;
         Score = score;
+        ModeID = modeID;
+        ModeName = modeName;
     }
 }

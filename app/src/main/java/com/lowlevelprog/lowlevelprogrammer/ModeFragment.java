@@ -79,6 +79,8 @@ public class ModeFragment extends Fragment {
                         Toast.makeText(getActivity(), String.format("%s|%s",
                                 fbAdapter.getRef(position).getKey(), model.getName()),
                                 Toast.LENGTH_SHORT).show();
+                        OnlineHelper.modeID = fbAdapter.getRef(position).getKey();
+                        OnlineHelper.modeName = model.getName();
                         if (fbAdapter.getRef(position).getKey().equals("01")) {
                             Intent startGame = new Intent(getActivity(), SimpleMode.class);
                             startActivity(startGame);

@@ -1,5 +1,6 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -76,7 +77,7 @@ public class RankingFragment extends Fragment {
                 rankingData.orderByChild("score")
         ) {
             @Override
-            protected void populateViewHolder(RankingViewHolder rankingViewHolder, Ranking ranking,
+            protected void populateViewHolder(RankingViewHolder rankingViewHolder, final Ranking ranking,
                                               int i) {
                 rankingViewHolder.nameTextView.setText(ranking.getUserName());
                 rankingViewHolder.scoreTextView.setText(String.valueOf(ranking.getScore()));
@@ -84,7 +85,9 @@ public class RankingFragment extends Fragment {
                 rankingViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-
+                        Intent detail = new Intent(getActivity(), RankingDetailed.class);
+                        detail.putExtra("viewUser", ranking.getUserName());
+                        startActivity(detail);
                     }
                 });
             }

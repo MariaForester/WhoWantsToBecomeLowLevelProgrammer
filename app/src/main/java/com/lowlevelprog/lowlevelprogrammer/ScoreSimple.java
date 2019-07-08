@@ -54,10 +54,13 @@ public class ScoreSimple extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         questionsScore = db.getReference("QuestionScore");
 
-        questionsScore.child(String.format("%s", OnlineHelper.currentUser.getUserName()))
-                .setValue(new QuestionScore(String.format("%s", OnlineHelper.currentUser.getUserName()),
+        questionsScore.child(String.format("%s_%s", OnlineHelper.currentUser.getUserName(),
+                OnlineHelper.modeID))
+                .setValue(new QuestionScore(String.format("%s_%s",
+                        OnlineHelper.currentUser.getUserName(), OnlineHelper.modeID),
                         OnlineHelper.currentUser.getUserName(),
-                        String.valueOf(SimpleMode.score)));
+                        String.valueOf(SimpleMode.score), OnlineHelper.modeID,
+                        OnlineHelper.modeName));
     }
 
     public void backHome(View view) {
@@ -71,7 +74,7 @@ public class ScoreSimple extends AppCompatActivity {
         alertDialogBuilder.setTitle("Вы точно не хотите сыграть еще раз");
         alertDialogBuilder.setPositiveButton("1", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(ScoreSimple.this, MainActivity.class);
+                Intent intent = new Intent(ScoreSimple.this, MultplayerHome.class);
                 startActivity(intent);
                 finish();
             }
