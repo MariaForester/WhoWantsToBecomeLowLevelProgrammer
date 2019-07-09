@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RankingDetailed"></activity>
+        <activity android:name=".HardMode"></activity>
+        <activity android:name=".RankingDetailed" />
         <activity android:name=".ScoreSimple" />
         <activity android:name=".ProgressSimple" />
         <activity android:name=".SimpleMode" />
@@ -30,6 +31,7 @@
             android:theme="@style/IntroTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -48,12 +50,12 @@
 
         <service android:name="$BroadcastReceiver.FirebaseIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service android:name="$BroadcastReceiver.FirebaseMessageService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENR"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENR" />
             </intent-filter>
         </service>
     </application>

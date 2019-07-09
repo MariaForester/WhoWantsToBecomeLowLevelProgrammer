@@ -76,13 +76,16 @@ public class ModeFragment extends Fragment {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(getActivity(), String.format("%s|%s",
-                                fbAdapter.getRef(position).getKey(), model.getName()),
+                        Toast.makeText(getActivity(), String.format("%s",
+                                model.getName()),
                                 Toast.LENGTH_SHORT).show();
                         OnlineHelper.modeID = fbAdapter.getRef(position).getKey();
                         OnlineHelper.modeName = model.getName();
                         if (fbAdapter.getRef(position).getKey().equals("01")) {
                             Intent startGame = new Intent(getActivity(), SimpleMode.class);
+                            startActivity(startGame);
+                        } else if (fbAdapter.getRef(position).getKey().equals("02")) {
+                            Intent startGame = new Intent(getActivity(), HardMode.class);
                             startActivity(startGame);
                         }
                     }
