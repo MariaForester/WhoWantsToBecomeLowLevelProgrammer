@@ -27,16 +27,15 @@ public class SimpleMode extends AppCompatActivity {
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
 
-    TextView question_ref;
+    TextView question_ref, reward;
     Helper query = new Helper();
     RadioGroup radioGroup;
     Button btn;
     RadioButton answer;
     RadioButton[] radios;
     String[] choices;
-    int number;
+    int number, question, setNumber;
     static int score;
-    TextView reward;
     DecimalFormat decimalFormat;
     String pattern;
     TextView textViewer;
@@ -48,7 +47,6 @@ public class SimpleMode extends AppCompatActivity {
     List<Integer> listForRandomChoices2;
     List<Integer> listForRandomChoices3;
     List<Integer> listForRandomChoices4;
-    int question, setNumber;
 
     ImageButton callBtn, fiftyFiftyBtn;
     int selectionIndex1, selectionIndex2;
@@ -123,6 +121,7 @@ public class SimpleMode extends AppCompatActivity {
                 }
             }
         });
+
         // Оставить 2 ответа из 4
         fiftyFiftyBtn = findViewById(R.id.simple_fifty_help);
         fiftyFiftyBtn.setOnClickListener(new View.OnClickListener() {
