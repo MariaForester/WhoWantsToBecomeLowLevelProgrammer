@@ -35,5 +35,5 @@
     <string name="score_simple_rus">Ваш счет:</string>
     <string name="name_rus">\tИмя</string>
     <string name="score_rus">Счет</string>
-    <string name="mode_name_rus">Игровой режим</string>
+    <string name="mode_name_rus">\tИгровой режим</string>
 </resources>

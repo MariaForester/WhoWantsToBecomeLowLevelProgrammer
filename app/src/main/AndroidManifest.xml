@@ -30,7 +30,6 @@
             android:theme="@style/IntroTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,6 +45,17 @@
         <activity
             android:name=".WonGame"
             android:screenOrientation="portrait" />
+
+        <service android:name="$BroadcastReceiver.FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name="$BroadcastReceiver.FirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENR"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

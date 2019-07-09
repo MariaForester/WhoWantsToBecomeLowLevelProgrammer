@@ -1,5 +1,7 @@
 package com.lowlevelprog.lowlevelprogrammer;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     // An opportunity to close the app on back button pressed
     @Override
     public void onBackPressed() {
@@ -158,4 +159,3 @@ public class MainActivity extends AppCompatActivity {
         return builder;
     }
 }
-
