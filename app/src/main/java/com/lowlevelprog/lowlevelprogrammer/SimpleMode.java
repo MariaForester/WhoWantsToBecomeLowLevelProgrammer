@@ -27,7 +27,7 @@ public class SimpleMode extends AppCompatActivity {
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
 
-    TextView question_ref, reward;
+    TextView question_ref, reward, textViewer;
     Helper query = new Helper();
     RadioGroup radioGroup;
     Button btn;
@@ -38,7 +38,6 @@ public class SimpleMode extends AppCompatActivity {
     static int score;
     DecimalFormat decimalFormat;
     String pattern;
-    TextView textViewer;
     CountDownTimer cdt;
     static List<Integer> listForProgress;
 

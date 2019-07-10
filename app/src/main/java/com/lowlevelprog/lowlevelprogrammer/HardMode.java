@@ -8,11 +8,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -28,9 +31,11 @@ public class HardMode extends AppCompatActivity {
     boolean callIsUsed, fiftyFiftyIsUSed;
     int number, question, setNumber;
     static int score;
-    TextView question_ref, reward;
+    TextView question_ref, reward, textViewer;
     Button btn;
     ImageButton callBtn;
+    CountDownTimer cdt;
+    MaterialEditText answerField;
 
     // списки для каждого сета вопросов
     List<Integer> listForRandomChoices1;
@@ -84,6 +89,8 @@ public class HardMode extends AppCompatActivity {
         setNumber = 0;
         setUpQuestionOnly(question, setNumber);
 
+        answerField = findViewById(R.id.answer_editing_hard);
+
         // Отправка вопроса в Whatsapp (помощь друга)
         callBtn = findViewById(R.id.hard_call_help);
         callBtn.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +116,20 @@ public class HardMode extends AppCompatActivity {
                 }
             }
         });
+
+        // игровой таймер
+        textViewer = findViewById(R.id.hard_mode_counter);
+        cdt = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long l) {
+                textViewer.setText(String.valueOf(l / 1000));
+            }
+
+            public void onFinish() {
+                textViewer.setText(R.string.time_over_rus);
+                startActivity(new Intent(HardMode.this, FailedGame.class));
+            }
+        }.start();
     }
 
     // Установление вопросов и счета
@@ -118,6 +139,20 @@ public class HardMode extends AppCompatActivity {
     }
 
     public void btnPressed(View v) {
+
+        String currentAnswer;
+        try {
+            currentAnswer = answerField.getText().toString();
+        } catch (NullPointerException ex) {
+            throw ex;
+        }
+        // Если ничего не было введено в поле и нажата кнопка "подтвердить"
+        if (currentAnswer.equals("")) {
+            Toast.makeText(getApplicationContext(), "Введите ответ",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     // Leaving or not leaving the game on button back pressed
