@@ -132,7 +132,7 @@ class Helper {
                 }
             default:
                 correctAnswer = question_set_4_hard[index][1];
-                if (index == 0) {
+                if (index == 1) {
                     return currentScore + 10000;
                 } else if (Math.abs(Integer.parseInt(answer) -
                         Integer.parseInt(correctAnswer)) == 0) {
@@ -168,13 +168,13 @@ class Helper {
             case 0:
                 correctAnswer = question_set_1_hard[index][1];
                 if (index <= 2) {
-                    return correctAnswer.equals(answer);
+                    return correctAnswer.equalsIgnoreCase(answer);
                 } else {
                     if (Integer.parseInt(correctAnswer) != -1) {
                         return (Math.abs(Integer.parseInt(answer) -
                                 Integer.parseInt(correctAnswer)) <= 1);
                     } else return
-                            correctAnswer.equals(answer);
+                            correctAnswer.equalsIgnoreCase(answer);
                 }
             case 1:
                 correctAnswer = question_set_2_hard[index][1];
@@ -186,7 +186,7 @@ class Helper {
                         Integer.parseInt(correctAnswer)) <= 1);
             default:
                 correctAnswer = question_set_4_hard[index][1];
-                if (index == 0) return correctAnswer.equals(answer);
+                if (index == 1) return correctAnswer.equalsIgnoreCase(answer);
                 else return (Math.abs(Integer.parseInt(answer) -
                         Integer.parseInt(correctAnswer)) <= 1);
         }

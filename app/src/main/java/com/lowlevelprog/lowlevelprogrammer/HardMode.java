@@ -3,6 +3,7 @@ package com.lowlevelprog.lowlevelprogrammer;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -212,7 +214,7 @@ public class HardMode extends AppCompatActivity {
 
         number++;
         if (number < query.count()) {
-            answerField = findViewById(R.id.answer_editing_hard);
+            answerField.getText().clear();
             if (number < 3) {
                 question = listForRandomChoices1.get(number);
                 setNumber = 0;
