@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -36,6 +37,7 @@ public class HardMode extends AppCompatActivity {
     ImageButton callBtn;
     CountDownTimer cdt;
     MaterialEditText answerField;
+    static List<Integer> listForProgress;
 
     // списки для каждого сета вопросов
     List<Integer> listForRandomChoices1;
@@ -51,6 +53,8 @@ public class HardMode extends AppCompatActivity {
         setContentView(R.layout.activity_hard_mode);
 
         myLayout = findViewById(R.id.hard_mode);
+
+        listForProgress = new ArrayList<>();
 
         // анимированный фон
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
@@ -134,7 +138,7 @@ public class HardMode extends AppCompatActivity {
 
     // Установление вопросов и счета
     private void setUpQuestionOnly(int index, int setNumber) {
-        question_ref.setText(query.getQuestion(index, setNumber));
+        question_ref.setText(query.getHardQuestion(index, setNumber));
         reward.setText(decimalFormat.format(score));
     }
 
@@ -152,7 +156,83 @@ public class HardMode extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
+        // counter
+        textViewer = findViewById(R.id.hard_mode_counter);
 
+        // WA
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (callIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Спросить у друга'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String questionForWA = query.getQuestion(question, setNumber);
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Привет! :) Знаешь ли ты ответ на "
+                        + "вопрос: '" + questionForWA + "?'");
+                try {
+                    startActivity(whatsappIntent);
+                    callIsUsed = true;
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // killing the timer when we are moving up to the next activity (if a user typed smth in)
+        if (!currentAnswer.equals("")) {
+            cdt.cancel(); // Setting up the timer for the next questions (5 seconds are reserved
+            // for the Progress screen)
+            cdt = new CountDownTimer(35000, 1000) {
+
+                public void onTick(long l) {
+                    textViewer.setText(String.valueOf(l / 1000));
+                }
+
+                public void onFinish() {
+                    textViewer.setText(R.string.time_over_rus);
+                    startActivity(new Intent(HardMode.this, FailedGame.class));
+                }
+            }.start();
+        }
+
+        // Checking the answer. Dependence on the number of set.
+        if (query.checkAnswerHard(question, currentAnswer, setNumber))
+            score = query.calculateScoreHard(question, currentAnswer, setNumber, score);
+        listForProgress.add(score);
+
+        // moving up to the progress screen
+        Intent intent = new Intent(HardMode.this, ProgressHard.class);
+        startActivity(intent);
+
+        number++;
+        if (number < query.count()) {
+            answerField = findViewById(R.id.answer_editing_hard);
+            if (number < 3) {
+                question = listForRandomChoices1.get(number);
+                setNumber = 0;
+            } else if (number < 6) {
+                question = listForRandomChoices2.get(number - 3);
+                setNumber = 1;
+            } else if (number < 9) {
+                setNumber = 2;
+                question = listForRandomChoices3.get(number - 6);
+            } else {
+                setNumber = 3;
+                question = listForRandomChoices4.get(number - 9);
+            }
+
+            setUpQuestionOnly(question, setNumber);
+        } else {
+            cdt.cancel();
+            startActivity(new Intent(this, ScoreHard.class));
+            finish();
+        }
     }
 
     // Leaving or not leaving the game on button back pressed

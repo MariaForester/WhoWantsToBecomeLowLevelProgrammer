@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/progress_lay_simple"
+    android:id="@+id/progress_lay_hard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradients_anim"
-    tools:context=".ProgressSimple">
+    tools:context=".ProgressHard">
 
 
     <LinearLayout
-        android:id="@+id/prog_linear_1_simple"
+        android:id="@+id/prog_linear_1_hard"
         android:layout_width="373dp"
         android:layout_height="612dp"
         android:layout_marginStart="8dp"
@@ -23,12 +23,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prog_linear_2_simple"
+        app:layout_constraintTop_toBottomOf="@+id/prog_linear_2_hard"
         app:layout_constraintVertical_bias="0.875">
 
 
         <Button
-            android:id="@+id/progress_btn1_simple"
+            android:id="@+id/progress_btn1_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -38,7 +38,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn2_simple"
+            android:id="@+id/progress_btn2_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -47,7 +47,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn3_simple"
+            android:id="@+id/progress_btn3_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -56,7 +56,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn4_simple"
+            android:id="@+id/progress_btn4_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -65,7 +65,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn5_simple"
+            android:id="@+id/progress_btn5_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -74,7 +74,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn6_simple"
+            android:id="@+id/progress_btn6_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -83,7 +83,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn7_simple"
+            android:id="@+id/progress_btn7_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -92,7 +92,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn8_simple"
+            android:id="@+id/progress_btn8_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -101,7 +101,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn9_simple"
+            android:id="@+id/progress_btn9_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -110,7 +110,7 @@
             app:fontFamily="@font/rex_bold_inline" />
 
         <Button
-            android:id="@+id/progress_btn10_simple"
+            android:id="@+id/progress_btn10_hard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -122,7 +122,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/prog_linear_2_simple"
+        android:id="@+id/prog_linear_2_hard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,7 +140,7 @@
 
 
         <TextView
-            android:id="@+id/textView_fail_simple"
+            android:id="@+id/textView_fail_hard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -163,7 +163,7 @@
             app:layout_constraintVertical_bias="0.016" />
 
         <TextView
-            android:id="@+id/progress_counter_simple"
+            android:id="@+id/progress_counter_hard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"

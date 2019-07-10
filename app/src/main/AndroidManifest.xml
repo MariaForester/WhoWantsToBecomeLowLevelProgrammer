@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HardMode"></activity>
+        <activity android:name=".ProgressHard"></activity>
+        <activity android:name=".ScoreHard" />
+        <activity android:name=".HardMode" />
         <activity android:name=".RankingDetailed" />
         <activity android:name=".ScoreSimple" />
         <activity android:name=".ProgressSimple" />
