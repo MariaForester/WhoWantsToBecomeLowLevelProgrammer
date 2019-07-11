@@ -39,7 +39,10 @@ class Helper {
             {"Универсальная Машина Тьюринга (МТ) может заменить... (сколько МТ)\n" +
                     "(Если точного численного ответа нет, поставьте '-1'", "-1"},
             {"Проблема останова была решена в\n" +
-                    "Если точного численного ответ нет, поставьте '-1'", "-1"}
+                    "Если точного численного ответ нет, поставьте '-1'", "-1"},
+            {"Человек, создавший первый в истории компьютерный вирус", "Скрент"},
+            {"Как назывались первые счеты", "абак"},
+            {"Первым в истории программистом была", "Ада"}
     };
 
     private String[][] question_set_2 = {
@@ -69,7 +72,14 @@ class Helper {
             {"Назовите число принципов фон Неймона", "5"},
             {"Назовите число основных регистров в EDSAC", "5"},
             {"EDSAC был основан на ?-битном слове", "18"},
-            {"EDSAC был основан в", "1949"}
+            {"EDSAC был основан в", "1949"},
+            {"Как в языке С можно обозначить 'правду'?", "1"},
+            {"Первый байт в памяти соответствует наименее значащим битам регистра", "little-endian"},
+            {"Первый байт в памяти соответствует наиболее значащим битам регистра", "big-endian"},
+            {"Кто изобрел первую вычислительную механическую машину", "Паскаль"},
+            {"Кто является автором технологии WWW", "Тим Бернерс-Ли"},
+            {"Технология создания корпоративных информационных систем, основанная на протоколах" +
+                    " интернета, но без доступа в глобальную сеть", "Intranet"}
     };
 
     private String[][] question_set_3 = {
@@ -95,7 +105,13 @@ class Helper {
                     "Если точного численного ответа нет, поставьте '-1'", "-1"},
             {"Принципы фон Неймана были опубликованы в", "1946"},
             {"Сколько битов использовалось в EDSAC?", "17"},
-            {"Третье поколение ЭВМ было с 1965 по", "1980"}
+            {"Третье поколение ЭВМ было с 1965 по", "1980"},
+            {"Как называлось запоминающее устройство в EDSAC", "трубка Уильямса"},
+            {"Первый американский программируемый компьютер", "Mark 1"},
+            {"Первый американский программируемый компьютер был построен в", "1941"},
+            {"Первым в мире компьютером с графическим пользовательским интерфейсом был", "Xerox " +
+                    "Alto"},
+            {"Как звали прародителя современных ноутбуков", "Hewlett-Packard 980A"}
     };
 
     private String[][] question_set_4 = {
@@ -122,6 +138,14 @@ class Helper {
             {"Детерминированный конечный автомат состоит из ? элементов", "5"},
             {"Вместе с фон Нейманом и Голдстайном в описании принципов построения ЭВМ участвовал",
                     "Беркс"},
+            {"Как нызвается промежуточный бит в длинных словах в EDSAC", "sandwich"},
+            {"Советская ЭВМ, первая в СССР и континентальной Европе", "МЭСМ"},
+            {"Как назывался самый тяжелый настольный компьютер в истории", "IBM 5120"},
+            {"Этот компьютер из «Терминатор 2: Судный день», где он используется молодым Джоном " +
+                    "Коннором, чтобы обойти систему безопасности банкомата",
+                    "Atari Portfolio"},
+            {"Первым в истории человечества компьютерным вирусом стал", "ELK CLONER"},
+            {"Кто изобрел компьютерную мышь", "Энгельбарт"}
     };
 
     // adding bitcoins according to the difficulty of the question
@@ -145,17 +169,19 @@ class Helper {
         switch (setNumber) {
             case 0:
                 correctAnswer = question_set_1_hard[index][1];
-                if (index <= 2) {
+                if (index <= 2 || index >= 5) {
                     return currentScore + 1000;
-                } else if (Math.abs(Integer.parseInt(answer) -
-                        Integer.parseInt(correctAnswer)) == 0) {
-                    return currentScore + 1000;
-                } else {
-                    return currentScore + 700;
-                }
+                } else if (Integer.parseInt(correctAnswer) != -1) {
+                    if (Math.abs(Integer.parseInt(answer) -
+                            Integer.parseInt(correctAnswer)) == 0) return currentScore + 1000;
+                    else {
+                        return currentScore + 700;
+                    }
+                } else return currentScore + 1000;
             case 1:
                 correctAnswer = question_set_2_hard[index][1];
-                if (Math.abs(Integer.parseInt(answer) -
+                if (index <= 2 || index >= 5) return currentScore + 2000;
+                else if (Math.abs(Integer.parseInt(answer) -
                         Integer.parseInt(correctAnswer)) == 0) {
                     return currentScore + 2000;
                 } else {
@@ -163,22 +189,22 @@ class Helper {
                 }
             case 2:
                 correctAnswer = question_set_3_hard[index][1];
-                if (Math.abs(Integer.parseInt(answer) -
-                        Integer.parseInt(correctAnswer)) == 0) {
+                if (index == 0 || index == 2 || (index >= 4 && index <= 5) || index >= 7)
                     return currentScore + 5000;
-                } else {
+                else if (Math.abs(Integer.parseInt(answer) -
+                        Integer.parseInt(correctAnswer)) == 0)
+                    return currentScore + 5000;
+                else if (Math.abs(Integer.parseInt(answer) -
+                        Integer.parseInt(correctAnswer)) == 1)
                     return currentScore + 3500;
-                }
+                else if (Math.abs(Integer.parseInt(answer) -
+                        Integer.parseInt(correctAnswer)) == 2)
+                    return currentScore + 2000;
+                else if (Math.abs(Integer.parseInt(answer) -
+                        Integer.parseInt(correctAnswer)) == 3)
+                    return currentScore + 1000;
             default:
-                correctAnswer = question_set_4_hard[index][1];
-                if (index == 1) {
-                    return currentScore + 10000;
-                } else if (Math.abs(Integer.parseInt(answer) -
-                        Integer.parseInt(correctAnswer)) == 0) {
-                    return currentScore + 10000;
-                } else {
-                    return currentScore + 7000;
-                }
+                return currentScore + 10000;
         }
     }
 
@@ -206,7 +232,7 @@ class Helper {
         switch (setNumber) {
             case 0:
                 correctAnswer = question_set_1_hard[index][1];
-                if (index <= 2) {
+                if (index <= 2 || index >= 5) {
                     return correctAnswer.equalsIgnoreCase(answer);
                 } else {
                     if (Integer.parseInt(correctAnswer) != -1) {
@@ -217,17 +243,26 @@ class Helper {
                 }
             case 1:
                 correctAnswer = question_set_2_hard[index][1];
-                return (Math.abs(Integer.parseInt(answer) -
+                if (index <= 2 || index >= 6) return correctAnswer.equalsIgnoreCase(answer);
+                else if (index <= 4) return (Math.abs(Integer.parseInt(answer) -
                         Integer.parseInt(correctAnswer)) <= 1);
+                else try {
+                        int answerAsNumber = Integer.parseInt(answer);
+                        if (answerAsNumber != 0) return true;
+                    } catch (NumberFormatException ex) {
+                        return false;
+                    }
             case 2:
                 correctAnswer = question_set_3_hard[index][1];
-                return (Math.abs(Integer.parseInt(answer) -
+                if (index == 0 || index == 2 || (index >= 4 && index <= 5) || index >= 7)
+                    return correctAnswer.equalsIgnoreCase(answer);
+                else if (index == 1 || index == 6) return (Math.abs(Integer.parseInt(answer) -
                         Integer.parseInt(correctAnswer)) <= 1);
+                else return (Math.abs(Integer.parseInt(answer) -
+                            Integer.parseInt(correctAnswer)) <= 3);
             default:
                 correctAnswer = question_set_4_hard[index][1];
-                if (index == 1) return correctAnswer.equalsIgnoreCase(answer);
-                else return (Math.abs(Integer.parseInt(answer) -
-                        Integer.parseInt(correctAnswer)) <= 1);
+                return correctAnswer.equalsIgnoreCase(answer);
         }
     }
 

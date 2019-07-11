@@ -3,7 +3,6 @@ package com.lowlevelprog.lowlevelprogrammer;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,10 +67,10 @@ public class HardMode extends AppCompatActivity {
         decimalFormat = new DecimalFormat(pattern);
 
         // Списки вопросов
-        listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices3 = Arrays.asList(0, 1, 2, 3);
-        listForRandomChoices4 = Arrays.asList(0, 1);
+        listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7);
+        listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        listForRandomChoices3 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        listForRandomChoices4 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7);
         Collections.shuffle(listForRandomChoices1);
         Collections.shuffle(listForRandomChoices2);
         Collections.shuffle(listForRandomChoices3);
@@ -133,7 +131,11 @@ public class HardMode extends AppCompatActivity {
 
             public void onFinish() {
                 textViewer.setText(R.string.time_over_rus);
-                startActivity(new Intent(HardMode.this, FailedGame.class));
+                Intent intent = new Intent();
+                intent.setClass(HardMode.this, FailedGame.class);
+                intent.putExtra("source", "FromHardGame");
+                HardMode.this.startActivity(intent);
+                cdt.cancel();
             }
         }.start();
     }
@@ -198,7 +200,11 @@ public class HardMode extends AppCompatActivity {
 
                 public void onFinish() {
                     textViewer.setText(R.string.time_over_rus);
-                    startActivity(new Intent(HardMode.this, FailedGame.class));
+                    Intent intent = new Intent();
+                    intent.setClass(HardMode.this, FailedGame.class);
+                    intent.putExtra("source", "FromHardGame");
+                    HardMode.this.startActivity(intent);
+                    cdt.cancel();
                 }
             }.start();
         }
@@ -211,6 +217,7 @@ public class HardMode extends AppCompatActivity {
         // moving up to the progress screen
         Intent intent = new Intent(HardMode.this, ProgressHard.class);
         startActivity(intent);
+
 
         number++;
         if (number < query.count()) {
@@ -233,7 +240,7 @@ public class HardMode extends AppCompatActivity {
         } else {
             cdt.cancel();
             startActivity(new Intent(this, ScoreHard.class));
-            finish();
+            this.finish();
         }
     }
 
@@ -246,7 +253,8 @@ public class HardMode extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(HardMode.this, MultplayerHome.class);
                 startActivity(intent);
-                finish();
+                cdt.cancel();
+                HardMode.this.finish();
             }
         }).setNegativeButton("0", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

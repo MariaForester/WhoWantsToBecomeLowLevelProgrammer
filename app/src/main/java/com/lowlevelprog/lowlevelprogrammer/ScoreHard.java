@@ -63,7 +63,9 @@ public class ScoreHard extends AppCompatActivity {
     }
 
     public void backHome(View view) {
-        finish();
+        Intent intent = new Intent(ScoreHard.this, HardMode.class);
+        startActivity(intent);
+        this.finish();
     }
 
     // Whether to play the game again or not

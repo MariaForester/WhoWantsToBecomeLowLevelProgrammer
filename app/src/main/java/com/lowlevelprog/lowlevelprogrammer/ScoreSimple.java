@@ -64,7 +64,9 @@ public class ScoreSimple extends AppCompatActivity {
     }
 
     public void backHome(View view) {
-        finish();
+        Intent intent = new Intent(ScoreSimple.this, SimpleMode.class);
+        startActivity(intent);
+        this.finish();
     }
 
     // Whether to play the game again or not

@@ -3,12 +3,15 @@ package com.lowlevelprog.lowlevelprogrammer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
 
 public class FailedGame extends AppCompatActivity {
@@ -42,13 +45,18 @@ public class FailedGame extends AppCompatActivity {
         Intent outerIntent = this.getIntent();
         if (outerIntent != null) {
             String str = outerIntent.getExtras().getString("source");
-            if (str == null) return;;
+            if (str == null) return;
+            ;
             if (str.equals("FromLocalGame")) {
                 Intent intent = new Intent(FailedGame.this, LocalGamePlayMode.class);
                 startActivity(intent);
                 this.finish();
             } else if (str.equals("FromSimpleMode")) {
                 Intent intent = new Intent(FailedGame.this, SimpleMode.class);
+                startActivity(intent);
+                this.finish();
+            } else if (str.equals("FromHardGame")) {
+                Intent intent = new Intent(FailedGame.this, HardMode.class);
                 startActivity(intent);
                 this.finish();
             }
