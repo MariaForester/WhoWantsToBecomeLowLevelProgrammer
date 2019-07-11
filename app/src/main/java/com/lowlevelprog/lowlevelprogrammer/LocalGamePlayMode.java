@@ -18,9 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class LocalGamePlayMode extends AppCompatActivity {
 
@@ -49,10 +51,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
     List<Integer> listForRandomChoices4;
     int question, setNumber;
 
-    ImageButton callBtn, fiftyFiftyBtn;
+    ImageButton callBtn, fiftyFiftyBtn, audienceButton;
     int selectionIndex1, selectionIndex2;
 
-    boolean callIsUsed, fiftyFiftyIsUSed;
+    boolean callIsUsed, fiftyFiftyIsUSed, audienceIsUsed;
 
     // OnCreate view
     @Override
@@ -84,6 +86,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         score = 0;
         callIsUsed = false;
         fiftyFiftyIsUSed = false;
+        audienceIsUsed = false;
         radioGroup = findViewById(R.id.radioGroup);
         question_ref = findViewById(R.id.question);
         btn = findViewById(R.id.submit_loc_mode);
@@ -149,6 +152,39 @@ public class LocalGamePlayMode extends AppCompatActivity {
             }
         });
 
+        // Помощь аудитории - верный ответ с вероятностью 40 процентов. Вероятность
+        // выбора любого другого из 4-х - 20 процентов.
+        audienceButton = findViewById(R.id.btn_audience_help);
+        audienceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (audienceIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Помощь аудитории'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int answerIndex = query.getAnswerIndex(question, setNumber);
+                ArrayList<Integer> weightedArr = new ArrayList<>();
+                for (int i = 0; i < 4; i++) {
+                    if (i == answerIndex) {
+                        for (int j = 0; j < 4; j++) weightedArr.add(i);
+                    } else {
+                        for (int j = 0; j < 2; j++) weightedArr.add(i);
+                    }
+                }
+
+                Random rand = new Random();
+                int randomBtnIndex = weightedArr.get(rand.nextInt(weightedArr.size()));
+
+                for (int i = 0; i < 4; i++) {
+                    if (i != randomBtnIndex) radios[i].setVisibility(View.INVISIBLE);
+                }
+                audienceIsUsed = true;
+            }
+        });
+
         // Game timer. There are only 30 seconds to submit the answer
         textViewer = findViewById(R.id.local_game_play_mode_counter);
         cdt = new CountDownTimer(30000, 1000) {
@@ -172,8 +208,9 @@ public class LocalGamePlayMode extends AppCompatActivity {
     // Actions when one of the answer buttons is pressed
     public void btnPressed(View v) {
         // Вернуть кнопки на место после выбора ответа
-        radios[selectionIndex1].setVisibility(View.VISIBLE);
-        radios[selectionIndex2].setVisibility(View.VISIBLE);
+        for (int i = 0; i < 4; i++) {
+            radios[i].setVisibility(View.VISIBLE);
+        }
 
         // Toast when nothing is clicked encouraging a user to click on some button
         int radioID = radioGroup.getCheckedRadioButtonId();
@@ -236,6 +273,39 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 radios[selectionIndex1].setVisibility(View.INVISIBLE);
                 radios[selectionIndex2].setVisibility(View.INVISIBLE);
                 fiftyFiftyIsUSed = true;
+            }
+        });
+
+        // Помощь аудитории - верный ответ с вероятностью 40 процентов. Вероятность
+        // выбора любого другого из 4-х - 20 процентов.
+        audienceButton = findViewById(R.id.btn_audience_help);
+        audienceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (audienceIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Помощь аудитории'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int answerIndex = query.getAnswerIndex(question, setNumber);
+                ArrayList<Integer> weightedArr = new ArrayList<>();
+                for (int i = 0; i < 4; i++) {
+                    if (i == answerIndex) {
+                        for (int j = 0; j < 4; j++) weightedArr.add(i);
+                    } else {
+                        for (int j = 0; j < 2; j++) weightedArr.add(i);
+                    }
+                }
+
+                Random rand = new Random();
+                int randomBtnIndex = weightedArr.get(rand.nextInt(weightedArr.size()));
+
+                for (int i = 0; i < 4; i++) {
+                    if (i != randomBtnIndex) radios[i].setVisibility(View.INVISIBLE);
+                }
+                audienceIsUsed = true;
             }
         });
 

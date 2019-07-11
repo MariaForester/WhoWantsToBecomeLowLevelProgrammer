@@ -266,7 +266,7 @@ class Helper {
         }
     }
 
-    // Унать номер кнопки, на которйо написан ответ на вопрос
+    // Унать номер кнопки, на которой написан ответ на вопрос
     int getAnswerIndex(int index, int setNumber) {
         switch (setNumber) {
             case 0:
