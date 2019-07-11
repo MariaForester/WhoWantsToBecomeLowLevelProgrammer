@@ -289,7 +289,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 intent.putExtra("source", "FromLocalGame");
                 LocalGamePlayMode.this.startActivity(intent);
                 // All 10 answers were correct
-                finish();
+                this.finish();
             }
         } else {
             cdt.cancel();
@@ -298,7 +298,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
             intent.putExtra("source", "FromLocalGame");
             LocalGamePlayMode.this.startActivity(intent);
             // At least one answer was incorrect
-            finish();
+            this.finish();
         }
 
     }
@@ -331,7 +331,8 @@ public class LocalGamePlayMode extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(LocalGamePlayMode.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                cdt.cancel();
+                LocalGamePlayMode.this.finish();
             }
         }).setNegativeButton("0", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

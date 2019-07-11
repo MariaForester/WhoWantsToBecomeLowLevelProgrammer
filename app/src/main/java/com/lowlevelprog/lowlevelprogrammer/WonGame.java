@@ -46,7 +46,7 @@ public class WonGame extends AppCompatActivity {
             if (str.equals("FromLocalGame")) {
                 Intent intent = new Intent(WonGame.this, LocalGamePlayMode.class);
                 startActivity(intent);
-                finish();
+                this.finish();
             }
         }
     }
@@ -60,7 +60,7 @@ public class WonGame extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(WonGame.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                WonGame.this.finish();
             }
         }).setNegativeButton("0", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

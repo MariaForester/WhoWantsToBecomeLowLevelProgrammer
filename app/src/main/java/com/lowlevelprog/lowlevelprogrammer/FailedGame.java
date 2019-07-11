@@ -46,11 +46,11 @@ public class FailedGame extends AppCompatActivity {
             if (str.equals("FromLocalGame")) {
                 Intent intent = new Intent(FailedGame.this, LocalGamePlayMode.class);
                 startActivity(intent);
-                finish();
+                this.finish();
             } else if (str.equals("FromSimpleMode")) {
                 Intent intent = new Intent(FailedGame.this, SimpleMode.class);
                 startActivity(intent);
-                finish();
+                this.finish();
             }
         }
     }
@@ -64,7 +64,7 @@ public class FailedGame extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(FailedGame.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                FailedGame.this.finish();
             }
         }).setNegativeButton("0", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

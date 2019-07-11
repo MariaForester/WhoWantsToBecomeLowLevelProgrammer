@@ -84,9 +84,11 @@ public class ModeFragment extends Fragment {
                         if (fbAdapter.getRef(position).getKey().equals("01")) {
                             Intent startGame = new Intent(getActivity(), SimpleMode.class);
                             startActivity(startGame);
+                            getActivity().finish();
                         } else if (fbAdapter.getRef(position).getKey().equals("02")) {
                             Intent startGame = new Intent(getActivity(), HardMode.class);
                             startActivity(startGame);
+                            getActivity().finish();
                         }
                     }
                 });

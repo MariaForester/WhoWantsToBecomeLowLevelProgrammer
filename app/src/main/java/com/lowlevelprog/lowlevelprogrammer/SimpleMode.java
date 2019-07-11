@@ -288,7 +288,7 @@ public class SimpleMode extends AppCompatActivity {
         } else {
             cdt.cancel();
             startActivity(new Intent(this, ScoreSimple.class));
-            finish();
+            this.finish();
         }
     }
 
@@ -320,7 +320,8 @@ public class SimpleMode extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(SimpleMode.this, MultplayerHome.class);
                 startActivity(intent);
-                finish();
+                cdt.cancel();
+                SimpleMode.this.finish();
             }
         }).setNegativeButton("0", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
