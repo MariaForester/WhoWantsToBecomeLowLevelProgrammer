@@ -71,10 +71,10 @@ public class LocalGamePlayMode extends AppCompatActivity {
         decimalFormat = new DecimalFormat(pattern);
 
         // Getting questions from each set in random order
-        listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4);
-        listForRandomChoices3 = Arrays.asList(0, 1, 2, 3);
-        listForRandomChoices4 = Arrays.asList(0, 1);
+        listForRandomChoices1 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        listForRandomChoices2 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        listForRandomChoices3 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        listForRandomChoices4 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7);
         Collections.shuffle(listForRandomChoices1);
         Collections.shuffle(listForRandomChoices2);
         Collections.shuffle(listForRandomChoices3);
@@ -159,7 +159,11 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
             public void onFinish() {
                 textViewer.setText(R.string.time_over_rus);
-                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
+                Intent intent = new Intent();
+                intent.setClass(LocalGamePlayMode.this, FailedGame.class);
+                intent.putExtra("source", "FromLocalGame");
+                LocalGamePlayMode.this.startActivity(intent);
+                cdt.cancel();
             }
         }.start();
 
@@ -247,7 +251,11 @@ public class LocalGamePlayMode extends AppCompatActivity {
 
             public void onFinish() {
                 textViewer.setText(R.string.time_over_rus);
-                startActivity(new Intent(LocalGamePlayMode.this, FailedGame.class));
+                Intent intent = new Intent();
+                intent.setClass(LocalGamePlayMode.this, FailedGame.class);
+                intent.putExtra("source", "FromLocalGame");
+                LocalGamePlayMode.this.startActivity(intent);
+                cdt.cancel();
             }
         }.start();
 
@@ -276,13 +284,19 @@ public class LocalGamePlayMode extends AppCompatActivity {
                 setUp(question, setNumber);
             } else {
                 cdt.cancel();
-                startActivity(new Intent(this, WonGame.class));
+                Intent intent = new Intent();
+                intent.setClass(LocalGamePlayMode.this, WonGame.class);
+                intent.putExtra("source", "FromLocalGame");
+                LocalGamePlayMode.this.startActivity(intent);
                 // All 10 answers were correct
                 finish();
             }
         } else {
             cdt.cancel();
-            startActivity(new Intent(this, FailedGame.class));
+            Intent intent = new Intent();
+            intent.setClass(LocalGamePlayMode.this, FailedGame.class);
+            intent.putExtra("source", "FromLocalGame");
+            LocalGamePlayMode.this.startActivity(intent);
             // At least one answer was incorrect
             finish();
         }

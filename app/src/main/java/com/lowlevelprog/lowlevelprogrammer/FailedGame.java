@@ -39,7 +39,20 @@ public class FailedGame extends AppCompatActivity {
 
     // If the user chooses to play again, the Failed Game activity closes
     public void playAgain(View view) {
-        finish();
+        Intent outerIntent = this.getIntent();
+        if (outerIntent != null) {
+            String str = outerIntent.getExtras().getString("source");
+            if (str == null) return;;
+            if (str.equals("FromLocalGame")) {
+                Intent intent = new Intent(FailedGame.this, LocalGamePlayMode.class);
+                startActivity(intent);
+                finish();
+            } else if (str.equals("FromSimpleMode")) {
+                Intent intent = new Intent(FailedGame.this, SimpleMode.class);
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     // Whether to play again or not to play again

@@ -39,7 +39,16 @@ public class WonGame extends AppCompatActivity {
     }
 
     public void backHome(View view) {
-        finish();
+        Intent outerIntent = this.getIntent();
+        if (outerIntent != null) {
+            String str = outerIntent.getExtras().getString("source");
+            if (str == null) return;;
+            if (str.equals("FromLocalGame")) {
+                Intent intent = new Intent(WonGame.this, LocalGamePlayMode.class);
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     // Whether to play the game again or not
