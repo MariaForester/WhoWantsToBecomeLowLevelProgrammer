@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class HardMode extends AppCompatActivity {
 
@@ -29,12 +30,12 @@ public class HardMode extends AppCompatActivity {
     AnimationDrawable animationDrawable;
     DecimalFormat decimalFormat;
     String pattern;
-    boolean callIsUsed, fiftyFiftyIsUSed;
+    boolean callIsUsed, fiftyFiftyIsUSed, audienceIsUsed;
     int number, question, setNumber;
     static int score;
     TextView question_ref, reward, textViewer;
     Button btn;
-    ImageButton callBtn;
+    ImageButton callBtn, audienceButton;
     CountDownTimer cdt;
     MaterialEditText answerField;
     static List<Integer> listForProgress;
@@ -82,6 +83,7 @@ public class HardMode extends AppCompatActivity {
         score = 0;
         callIsUsed = false;
         fiftyFiftyIsUSed = false;
+        audienceIsUsed = false;
 
         // Соответствие частей экрана с xml файлом
         question_ref = findViewById(R.id.hard_question);
@@ -118,6 +120,34 @@ public class HardMode extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // with a 60 percent probability the audience knows the answer
+        audienceButton = findViewById(R.id.btn_audience_help_hard);
+        audienceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (audienceIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Помощь аудитории'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ArrayList<Integer> weightedArr = new ArrayList<>();
+                for (int i = 0; i < 6; i++) weightedArr.add(1);
+                for (int i = 0; i < 4; i++) weightedArr.add(0);
+                Random rand = new Random();
+                int randomFromArr = weightedArr.get(rand.nextInt(weightedArr.size()));
+                if (randomFromArr == 1) {
+                    answerField.setText(query.getAnswerStringHard(question, setNumber));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Аудитория не знает ответа на данный " +
+                            "вопрос!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                audienceIsUsed = true;
             }
         });
 
@@ -185,6 +215,34 @@ public class HardMode extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // with a 60 percent probability the audience knows the answer
+        audienceButton = findViewById(R.id.btn_audience_help_hard);
+        audienceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (audienceIsUsed) {
+                    Toast.makeText(getApplicationContext(), "Вы уже использовали попытку " +
+                                    "'Помощь аудитории'!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ArrayList<Integer> weightedArr = new ArrayList<>();
+                for (int i = 0; i < 6; i++) weightedArr.add(1);
+                for (int i = 0; i < 4; i++) weightedArr.add(0);
+                Random rand = new Random();
+                int randomFromArr = weightedArr.get(rand.nextInt(weightedArr.size()));
+                if (randomFromArr == 1) {
+                    answerField.setText(query.getAnswerStringHard(question, setNumber));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Аудитория не знает ответа на данный " +
+                            "вопрос!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                audienceIsUsed = true;
             }
         });
 

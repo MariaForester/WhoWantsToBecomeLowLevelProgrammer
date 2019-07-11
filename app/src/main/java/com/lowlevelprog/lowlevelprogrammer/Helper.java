@@ -280,6 +280,20 @@ class Helper {
         }
     }
 
+    // Get an answer
+    String getAnswerStringHard(int index, int setNumber){
+        switch (setNumber){
+            case 0:
+                return question_set_1_hard[index][1];
+            case 1:
+                return question_set_2_hard[index][1];
+            case 2:
+                return question_set_3_hard[index][1];
+            default:
+                return question_set_4_hard[index][1];
+        }
+    }
+
     // retrieve a question by its index and set number
     String getQuestion(int index, int setNumber) {
         switch (setNumber) {
