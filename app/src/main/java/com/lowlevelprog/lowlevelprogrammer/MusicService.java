@@ -31,7 +31,7 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     public void onCreate() {
         super.onCreate();
 
-        mPlayer = MediaPlayer.create(this, R.raw.Simple_Plan);
+        mPlayer = MediaPlayer.create(this, R.raw.track);
         mPlayer.setOnErrorListener(this);
 
         if (mPlayer != null) {
@@ -78,7 +78,7 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     }
 
     public void startMusic() {
-        mPlayer = MediaPlayer.create(this, R.raw.Simple_Plan);
+        mPlayer = MediaPlayer.create(this, R.raw.track);
         mPlayer.setOnErrorListener(this);
 
         if (mPlayer != null) {
