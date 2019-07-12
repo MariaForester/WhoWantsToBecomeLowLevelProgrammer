@@ -25,6 +25,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+
+        <ImageButton
+            android:id="@+id/soundRegulator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:contentDescription="@string/sound_button_description"
+            android:onClick="soundOff" />
+
         <com.hanks.htextview.line.LineTextView
             android:id="@+id/tv_htext"
             android:layout_width="wrap_content"

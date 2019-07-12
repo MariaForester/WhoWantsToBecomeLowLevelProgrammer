@@ -7,9 +7,11 @@ import android.content.ServiceConnection;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.content.DialogInterface;
 import android.os.IBinder;
@@ -28,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
     HomeWatcher mHomeWatcher;
+    static boolean soundIsOff;
 
     // variables for music
     private boolean mIsBound = false;
     private MusicService mServ;
-    private ServiceConnection Scon =new ServiceConnection(){
+    private ServiceConnection Scon = new ServiceConnection() {
 
         public void onServiceConnected(ComponentName name, IBinder
                 binder) {
-            mServ = ((MusicService.ServiceBinder)binder).getService();
+            mServ = ((MusicService.ServiceBinder) binder).getService();
         }
 
         public void onServiceDisconnected(ComponentName name) {
@@ -44,16 +47,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon,Context.BIND_AUTO_CREATE);
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
         mIsBound = true;
     }
 
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
+    void doUnbindService() {
+        if (mIsBound) {
             unbindService(Scon);
             mIsBound = false;
         }
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myLayout = findViewById(R.id.layout_main);
+
+        soundIsOff = false;
+        findViewById(R.id.soundRegulator).setBackgroundResource(R.drawable.volume_up);
 
         // Animated background
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
@@ -86,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     mServ.pauseMusic();
                 }
             }
+
             @Override
             public void onHomeLongPressed() {
                 if (mServ != null) {
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     // An opportunity to close the app on back button pressed
     @Override
     public void onBackPressed() {
@@ -206,9 +212,8 @@ public class MainActivity extends AppCompatActivity {
 
         doUnbindService();
         Intent music = new Intent();
-        music.setClass(this,MusicService.class);
+        music.setClass(this, MusicService.class);
         stopService(music);
-
     }
 
     // Checking if there is an Internet connection
@@ -251,5 +256,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return builder;
+    }
+
+    public void soundOff(View view) {
+        if (!soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+            findViewById(R.id.soundRegulator).setBackgroundResource(R.drawable.volume_down);
+            soundIsOff = true;
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+            findViewById(R.id.soundRegulator).setBackgroundResource(R.drawable.volume_up);
+            soundIsOff = false;
+        }
     }
 }

@@ -37,4 +37,5 @@
     <string name="score_rus">Счет</string>
     <string name="mode_name_rus">\tИгровой режим</string>
     <string name="answer_rus">Ответ</string>
+    <string name="sound_button_description">Turning sound off and on</string>
 </resources>
