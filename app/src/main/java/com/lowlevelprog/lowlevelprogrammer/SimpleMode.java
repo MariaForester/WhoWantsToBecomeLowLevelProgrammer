@@ -107,19 +107,14 @@ public class SimpleMode extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String questionForWA = query.getQuestion(question, setNumber);
-                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-                whatsappIntent.setType("text/plain");
-                whatsappIntent.setPackage("com.whatsapp");
-                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Привет! :) Знаешь ли ты ответ на "
-                        + "вопрос: " + questionForWA + "?");
-                try {
-                    startActivity(whatsappIntent);
-                    callIsUsed = true;
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
-                            Toast.LENGTH_SHORT).show();
-                }
+                String questionToShare = query.getQuestion(question, setNumber);
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "Привет!\nЗнаешь ли ты ответ на "
+                        + "вопрос: '" + questionToShare + "?'";
+                myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(myIntent, "Отправить через"));
+                callIsUsed = true;
             }
         });
 
@@ -231,19 +226,14 @@ public class SimpleMode extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String questionForWA = query.getQuestion(question, setNumber);
-                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-                whatsappIntent.setType("text/plain");
-                whatsappIntent.setPackage("com.whatsapp");
-                whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Привет! :) Знаешь ли ты ответ на "
-                        + "вопрос: '" + questionForWA + "?'");
-                try {
-                    startActivity(whatsappIntent);
-                    callIsUsed = true;
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(), "Whatsapp не установлен!",
-                            Toast.LENGTH_SHORT).show();
-                }
+                String questionToShare = query.getQuestion(question, setNumber);
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "Привет!\nЗнаешь ли ты ответ на "
+                        + "вопрос: '" + questionToShare + "?'";
+                myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(myIntent, "Отправить через"));
+                callIsUsed = true;
             }
         });
 
