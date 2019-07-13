@@ -21,6 +21,7 @@ public class LocalGame extends AppCompatActivity {
     AnimationDrawable animationDrawable;
     Button button_start;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     // for music
     private boolean mIsBound = false;
@@ -71,10 +72,18 @@ public class LocalGame extends AppCompatActivity {
         });
 
         // binding music service
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
@@ -84,6 +93,7 @@ public class LocalGame extends AppCompatActivity {
                     mServ.pauseMusic();
                 }
             }
+
             @Override
             public void onHomeLongPressed() {
                 if (mServ != null) {
@@ -119,7 +129,7 @@ public class LocalGame extends AppCompatActivity {
 
         doUnbindService();
         Intent music = new Intent();
-        music.setClass(this,MusicService.class);
+        music.setClass(this, MusicService.class);
         stopService(music);
 
     }

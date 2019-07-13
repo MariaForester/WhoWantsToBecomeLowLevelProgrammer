@@ -47,6 +47,7 @@ public class SimpleMode extends AppCompatActivity {
     CountDownTimer cdt;
     static List<Integer> listForProgress;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -116,10 +117,18 @@ public class SimpleMode extends AppCompatActivity {
         Collections.shuffle(listForRandomChoices4);
 
         // music
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {

@@ -34,6 +34,7 @@ public class MultplayerHome extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     BroadcastReceiver myRegistrationBroadcastReceiver;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     // music
     private boolean mIsBound = false;
@@ -116,10 +117,18 @@ public class MultplayerHome extends AppCompatActivity {
         registrarionNotification();
 
         // music
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {

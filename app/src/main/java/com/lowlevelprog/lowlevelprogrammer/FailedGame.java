@@ -25,6 +25,7 @@ public class FailedGame extends AppCompatActivity {
     AnimationDrawable animationDrawable;
     ImageView failImage;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -65,10 +66,19 @@ public class FailedGame extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4500);
         animationDrawable.start();
 
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        // music
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {

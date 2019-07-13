@@ -25,12 +25,12 @@ import com.hanks.htextview.line.LineTextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LineTextView hTextView;
-    private Button button_local, button_multiplayer;
+    LineTextView hTextView;
+    Button button_local, button_multiplayer;
     ConstraintLayout myLayout;
     AnimationDrawable animationDrawable;
     HomeWatcher mHomeWatcher;
-    static boolean soundIsOff;
+    static boolean soundIsOff = false;
 
     // variables for music
     private boolean mIsBound = false;
@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         myLayout = findViewById(R.id.layout_main);
 
-        soundIsOff = false;
         findViewById(R.id.soundRegulator).setBackgroundResource(R.drawable.volume_up);
 
         // Animated background
@@ -126,8 +125,9 @@ public class MainActivity extends AppCompatActivity {
     // Opening the game mode according to the button clicked
     public void openGameMode(int identifier) {
         Intent intent;
-        if (identifier == R.id.but_loc_game)
+        if (identifier == R.id.but_loc_game){
             intent = new Intent(this, LocalGame.class);
+        }
         else
             intent = new Intent(this, MultiplayerGame.class);
         startActivity(intent);
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // concerning music playing
-        if (mServ != null) {
+        if (mServ != null && !soundIsOff) {
             mServ.resumeMusic();
         }
 
@@ -258,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
         return builder;
     }
 
+    // включить и выключить звук по кнопке
     public void soundOff(View view) {
         if (!soundIsOff) {
             doUnbindService();

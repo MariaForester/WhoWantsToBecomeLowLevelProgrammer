@@ -45,6 +45,7 @@ public class HardMode extends AppCompatActivity {
     MaterialEditText answerField;
     static List<Integer> listForProgress;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     // списки для каждого сета вопросов
     List<Integer> listForRandomChoices1;
@@ -114,11 +115,18 @@ public class HardMode extends AppCompatActivity {
         Collections.shuffle(listForRandomChoices4);
 
         // music
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
-
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
             @Override

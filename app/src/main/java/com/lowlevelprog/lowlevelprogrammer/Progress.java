@@ -31,6 +31,7 @@ public class Progress extends AppCompatActivity {
     LinearLayout myLinLayout;
     Button[] progressButtons = new Button[10];
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
     int[] buttonsIDs = new int[]{
             R.id.progress_btn1, R.id.progress_btn2, R.id.progress_btn3, R.id.progress_btn4,
             R.id.progress_btn5, R.id.progress_btn6, R.id.progress_btn7, R.id.progress_btn8,
@@ -86,10 +87,18 @@ public class Progress extends AppCompatActivity {
         animationDrawable.start();
 
         // music
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {

@@ -29,6 +29,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+
 public class LocalGamePlayMode extends AppCompatActivity {
 
     ConstraintLayout myLayout;
@@ -49,6 +51,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
     TextView textViewer;
     CountDownTimer cdt;
     HomeWatcher mHomeWatcher;
+    boolean soundIsOff;
 
     // 4 lists for each set of questions. We choose a random question from the certain set
     List<Integer> listForRandomChoices1;
@@ -117,10 +120,18 @@ public class LocalGamePlayMode extends AppCompatActivity {
         Collections.shuffle(listForRandomChoices4);
 
         // music
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        soundIsOff = MainActivity.soundIsOff;
+        if (soundIsOff) {
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } else {
+            doBindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
@@ -488,6 +499,7 @@ public class LocalGamePlayMode extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton("1", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(LocalGamePlayMode.this, MainActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 cdt.cancel();
                 LocalGamePlayMode.this.finish();
